@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.immersive_deposit_scanner": "Server-authoritative core-sample deposit tracking with JourneyMap visualization.",
+  "commands.immersive_deposit_scanner.scanheld.none": "Hold a valid Immersive Engineering core sample or Immersive Petroleum survey result.",
+  "commands.immersive_deposit_scanner.scanheld.success": "Recorded or updated %s deposit(s).",
+  "commands.immersive_deposit_scanner.resync": "Deposit sync sent.",
+  "commands.immersive_deposit_scanner.list.empty": "No tracked deposits are visible.",
+  "commands.immersive_deposit_scanner.list.header": "%s tracked deposit(s):",
+  "commands.immersive_deposit_scanner.clear.mine": "Cleared your tracked deposits.",
+  "commands.immersive_deposit_scanner.clear.all": "Cleared all tracked deposits.",
+  "commands.immersive_deposit_scanner.remove.currentchunk": "Removed %s tracked deposit(s) in this chunk.",
+  "commands.immersive_deposit_scanner.debug.heldsample": "Held sample: %s"
+}
+

@@ -1,0 +1,9 @@
+.gradle/
+build/
+run/
+runs/
+logs/
+out/
+.idea/
+*.iml
+.codex/local.env

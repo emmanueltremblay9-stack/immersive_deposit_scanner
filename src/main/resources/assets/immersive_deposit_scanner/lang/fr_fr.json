@@ -1,0 +1,13 @@
+{
+  "modmenu.descriptionTranslation.immersive_deposit_scanner": "Suivi serveur des gisements par core sample avec affichage JourneyMap.",
+  "commands.immersive_deposit_scanner.scanheld.none": "Tenez un core sample Immersive Engineering valide ou un résultat de sondage Immersive Petroleum.",
+  "commands.immersive_deposit_scanner.scanheld.success": "%s gisement(s) enregistré(s) ou mis à jour.",
+  "commands.immersive_deposit_scanner.resync": "Synchronisation des gisements envoyée.",
+  "commands.immersive_deposit_scanner.list.empty": "Aucun gisement suivi visible.",
+  "commands.immersive_deposit_scanner.list.header": "%s gisement(s) suivi(s) :",
+  "commands.immersive_deposit_scanner.clear.mine": "Vos gisements suivis ont été effacés.",
+  "commands.immersive_deposit_scanner.clear.all": "Tous les gisements suivis ont été effacés.",
+  "commands.immersive_deposit_scanner.remove.currentchunk": "%s gisement(s) supprimé(s) dans ce chunk.",
+  "commands.immersive_deposit_scanner.debug.heldsample": "Echantillon tenu : %s"
+}
+

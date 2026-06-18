@@ -1,0 +1,181 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.141'
+    id 'idea'
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+    gradleVersion = '8.8'
+}
+
+version = "${minecraft_version}-${mod_version}"
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'NeoForge'
+        url = 'https://maven.neoforged.net/releases'
+    }
+    maven {
+        name = 'BlameJared'
+        url = 'https://maven.blamejared.com'
+    }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+    }
+    maven {
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+}
+
+sourceSets {
+    qa {
+        java.srcDir('src/qa/java')
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+neoForge {
+    version = neo_version
+
+    parchment {
+        mappingsVersion = parchment_mappings_version
+        minecraftVersion = parchment_minecraft_version
+    }
+
+    runs {
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.INFO
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        client {
+            client()
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+        }
+
+        gameTestServer {
+            type = 'gameTestServer'
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id,
+                    '--all',
+                    '--output', file('src/generated/resources/').getAbsolutePath(),
+                    '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    compileOnly "info.journeymap:journeymap-api-neoforge:${journeymap_api_version}"
+    compileOnly "blusunrize.immersiveengineering:ImmersiveEngineering:${immersive_engineering_version}"
+    compileOnly "maven.modrinth:immersivepetroleum:${immersive_petroleum_version}"
+
+    localRuntime "maven.modrinth:journeymap:${journeymap_runtime_version}"
+    localRuntime "blusunrize.immersiveengineering:ImmersiveEngineering:${immersive_engineering_version}"
+    localRuntime "maven.modrinth:immersivepetroleum:${immersive_petroleum_version}"
+}
+
+var generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description,
+            journeymap_api_version : journeymap_api_version,
+            journeymap_runtime_version : journeymap_runtime_version,
+            immersive_engineering_version: immersive_engineering_version,
+            immersive_petroleum_version  : immersive_petroleum_version
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from 'src/main/templates'
+    into layout.buildDirectory.dir('generated/sources/modMetadata')
+}
+
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+tasks.register('qaDataModel', JavaExec) {
+    group = 'verification'
+    description = 'Runs lightweight data-model and cache regression checks.'
+    classpath = sourceSets.qa.runtimeClasspath
+    mainClass = 'com.oblixorprime.immersivedepositscanner.qa.DataModelQa'
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('qaDataModel')
+}
+
+tasks.named('jar', Jar).configure {
+    from('LICENSE')
+    from('NOTICE.md')
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
