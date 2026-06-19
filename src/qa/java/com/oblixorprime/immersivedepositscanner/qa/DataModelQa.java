@@ -6,6 +6,7 @@ import com.oblixorprime.immersivedepositscanner.data.DepositSource;
 import com.oblixorprime.immersivedepositscanner.data.ImmersiveDepositSavedData;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDeposit;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDepositKey;
+import com.oblixorprime.immersivedepositscanner.integration.ie.IECoreSampleReaderQa;
 import com.oblixorprime.immersivedepositscanner.network.payload.DepositRemovePayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.DepositUpsertPayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncBatchPayload;
@@ -34,6 +35,7 @@ public final class DataModelQa {
 
     public static void main(String[] args) {
         assertCommonNetworkHandlerDoesNotDirectlyLinkClientHandlers();
+        IECoreSampleReaderQa.run();
 
         UUID player = UUID.fromString("00000000-0000-0000-0000-000000000001");
         UUID secondPlayer = UUID.fromString("00000000-0000-0000-0000-000000000002");

@@ -1,5 +1,6 @@
 package com.oblixorprime.immersivedepositscanner.integration.ie;
 
+import blusunrize.immersiveengineering.api.excavator.ExcavatorHandler;
 import blusunrize.immersiveengineering.common.items.CoresampleItem;
 import blusunrize.immersiveengineering.common.register.IEDataComponents;
 import com.oblixorprime.immersivedepositscanner.data.DepositKind;
@@ -50,6 +51,11 @@ public final class IECoreSampleReader {
             CoresampleItem.VeinSample vein
     ) {
         ResourceLocation mineral = vein.mineral();
+        int maximumYield = ExcavatorHandler.mineralVeinYield;
+        OptionalLong currentAmount = currentYield(vein.depletion(), maximumYield);
+        OptionalLong maximumAmount = maximumYield(maximumYield);
+        OptionalDouble percentageRemaining = remainingPercentage(vein.depletion(), maximumYield);
+        double saturation = clamp01(vein.saturation());
         TrackedDepositKey key = new TrackedDepositKey(
                 samplePosition.dimension(),
                 chunkX,
@@ -57,7 +63,6 @@ public final class IECoreSampleReader {
                 DepositSource.IMMERSIVE_ENGINEERING,
                 mineral
         );
-        double saturation = clamp01(vein.saturation());
         TrackedDeposit deposit = new TrackedDeposit(
                 key,
                 DepositKind.MINERAL,
@@ -67,12 +72,36 @@ public final class IECoreSampleReader {
                 player.getUUID(),
                 now,
                 now,
-                vein.depletion() >= 0 ? OptionalLong.of(vein.depletion()) : OptionalLong.empty(),
-                OptionalLong.empty(),
-                OptionalDouble.of(saturation),
-                saturation <= 0.0D
+                currentAmount,
+                maximumAmount,
+                percentageRemaining,
+                isDepleted(vein.depletion(), maximumYield, saturation)
         );
         return new IEMineralDiscovery(deposit);
+    }
+
+    static OptionalLong currentYield(int depletion, int maximumYield) {
+        if (depletion < 0 || maximumYield <= 0) {
+            return OptionalLong.empty();
+        }
+        return OptionalLong.of(Math.max(0L, (long) maximumYield - depletion));
+    }
+
+    static OptionalLong maximumYield(int maximumYield) {
+        return maximumYield > 0 ? OptionalLong.of(maximumYield) : OptionalLong.empty();
+    }
+
+    static OptionalDouble remainingPercentage(int depletion, int maximumYield) {
+        OptionalLong currentYield = currentYield(depletion, maximumYield);
+        if (currentYield.isEmpty()) {
+            return OptionalDouble.empty();
+        }
+        return OptionalDouble.of(currentYield.getAsLong() / (double) maximumYield);
+    }
+
+    static boolean isDepleted(int depletion, int maximumYield, double saturation) {
+        OptionalLong currentYield = currentYield(depletion, maximumYield);
+        return currentYield.isPresent() ? currentYield.getAsLong() <= 0L : clamp01(saturation) <= 0.0D;
     }
 
     private static double clamp01(double value) {
@@ -98,4 +127,3 @@ public final class IECoreSampleReader {
         return builder.toString();
     }
 }
-
