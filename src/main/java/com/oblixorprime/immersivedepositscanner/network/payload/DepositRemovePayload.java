@@ -2,6 +2,7 @@ package com.oblixorprime.immersivedepositscanner.network.payload;
 
 import com.oblixorprime.immersivedepositscanner.ImmersiveDepositScanner;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDepositKey;
+import java.util.Objects;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -20,9 +21,12 @@ public record DepositRemovePayload(TrackedDepositKey key) implements CustomPacke
         }
     };
 
+    public DepositRemovePayload {
+        Objects.requireNonNull(key, "key");
+    }
+
     @Override
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 }
-

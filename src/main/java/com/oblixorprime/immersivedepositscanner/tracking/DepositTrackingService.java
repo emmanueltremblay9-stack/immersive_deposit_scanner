@@ -1,5 +1,6 @@
 package com.oblixorprime.immersivedepositscanner.tracking;
 
+import com.oblixorprime.immersivedepositscanner.ImmersiveDepositScanner;
 import com.oblixorprime.immersivedepositscanner.config.ServerConfig;
 import com.oblixorprime.immersivedepositscanner.config.SharingMode;
 import com.oblixorprime.immersivedepositscanner.data.DepositSource;
@@ -19,6 +20,7 @@ import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncStartPay
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
@@ -79,7 +81,15 @@ public final class DepositTrackingService {
 
     public static void sendFullSync(ServerPlayer player) {
         ImmersiveDepositSavedData data = ImmersiveDepositSavedData.get(player.server);
-        List<TrackedDeposit> visible = visibleDeposits(data, player);
+        List<TrackedDeposit> allVisible = visibleDeposits(data, player);
+        List<TrackedDeposit> visible = limitForFullSync(allVisible);
+        if (visible.size() < allVisible.size()) {
+            ImmersiveDepositScanner.LOGGER.warn(
+                    "Full deposit sync for {} reached the {} entry protocol limit; entries beyond the cap are not sent",
+                    player.getGameProfile().getName(),
+                    FullSyncStartPayload.MAX_EXPECTED_DEPOSITS
+            );
+        }
         UUID syncId = UUID.randomUUID();
         NetworkHandler.sendToPlayer(player, new FullSyncStartPayload(syncId, visible.size()));
         for (int start = 0; start < visible.size(); start += FullSyncBatchPayload.MAX_BATCH_SIZE) {
@@ -123,6 +133,14 @@ public final class DepositTrackingService {
 
     public static List<TrackedDeposit> visibleDeposits(ServerPlayer player) {
         return visibleDeposits(ImmersiveDepositSavedData.get(player.server), player);
+    }
+
+    public static List<TrackedDeposit> limitForFullSync(List<TrackedDeposit> visible) {
+        Objects.requireNonNull(visible, "visible");
+        if (visible.size() <= FullSyncStartPayload.MAX_EXPECTED_DEPOSITS) {
+            return visible;
+        }
+        return List.copyOf(visible.subList(0, FullSyncStartPayload.MAX_EXPECTED_DEPOSITS));
     }
 
     public static Component debugHeldSample(ServerPlayer player) {

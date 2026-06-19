@@ -1,6 +1,7 @@
 package com.oblixorprime.immersivedepositscanner.network.payload;
 
 import com.oblixorprime.immersivedepositscanner.ImmersiveDepositScanner;
+import java.util.Objects;
 import java.util.UUID;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -20,9 +21,12 @@ public record FullSyncEndPayload(UUID syncId) implements CustomPacketPayload {
         }
     };
 
+    public FullSyncEndPayload {
+        Objects.requireNonNull(syncId, "syncId");
+    }
+
     @Override
     public Type<? extends CustomPacketPayload> type() {
         return TYPE;
     }
 }
-

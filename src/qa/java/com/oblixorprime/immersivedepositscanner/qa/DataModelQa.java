@@ -6,8 +6,12 @@ import com.oblixorprime.immersivedepositscanner.data.DepositSource;
 import com.oblixorprime.immersivedepositscanner.data.ImmersiveDepositSavedData;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDeposit;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDepositKey;
+import com.oblixorprime.immersivedepositscanner.network.payload.DepositRemovePayload;
+import com.oblixorprime.immersivedepositscanner.network.payload.DepositUpsertPayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncBatchPayload;
+import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncEndPayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncStartPayload;
+import com.oblixorprime.immersivedepositscanner.tracking.DepositTrackingService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -104,6 +108,16 @@ public final class DataModelQa {
                 () -> new FullSyncBatchPayload(UUID.randomUUID(), oversizedBatch),
                 "oversized sync batches must be rejected before encoding"
         );
+        List<TrackedDeposit> oversizedSync = new ArrayList<>(Collections.nCopies(FullSyncStartPayload.MAX_EXPECTED_DEPOSITS + 1, ip));
+        assertEquals(
+                FullSyncStartPayload.MAX_EXPECTED_DEPOSITS,
+                DepositTrackingService.limitForFullSync(oversizedSync).size(),
+                "full sync selection must be capped before creating the start payload"
+        );
+        assertEquals(2, DepositTrackingService.limitForFullSync(List.of(ie, ip)).size(), "normal full sync selection must not be truncated");
+        assertThrows(() -> new DepositUpsertPayload(null), "null upsert payload deposits must be rejected at construction");
+        assertThrows(() -> new DepositRemovePayload(null), "null remove payload keys must be rejected at construction");
+        assertThrows(() -> new FullSyncEndPayload(null), "null sync end ids must be rejected at construction");
 
         ClientDepositCache.clear();
         UUID syncId = UUID.fromString("00000000-0000-0000-0000-000000000003");
