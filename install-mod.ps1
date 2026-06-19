@@ -64,7 +64,12 @@ function Read-LocalEnv([string]$Path) {
 
 function Get-JarMetadata([string]$JarPath) {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    $zip = [System.IO.Compression.ZipFile]::OpenRead($JarPath)
+    try {
+        $zip = [System.IO.Compression.ZipFile]::OpenRead($JarPath)
+    }
+    catch {
+        return ""
+    }
     try {
         $entry = $zip.GetEntry("META-INF/neoforge.mods.toml")
         if ($null -eq $entry) {
@@ -81,6 +86,11 @@ function Get-JarMetadata([string]$JarPath) {
     finally {
         $zip.Dispose()
     }
+}
+
+function Test-JarContainsModId([string]$JarPath, [string]$ModId) {
+    $jarMetadata = Get-JarMetadata $JarPath
+    return $jarMetadata -match "modId\s*=\s*`"$([regex]::Escape($ModId))`""
 }
 
 $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -153,14 +163,13 @@ if ($Metadata -notmatch "modId\s*=\s*`"$([regex]::Escape($ModId))`"" -or $Metada
     throw "Built jar metadata does not contain expected mod id $ModId and version $NewVersion."
 }
 
-$OldJars = @(Get-ChildItem -LiteralPath $ModsDir -Filter "$ModId*.jar" -File)
+$OldJars = @(Get-ChildItem -LiteralPath $ModsDir -Filter "*.jar" -File | Where-Object {
+    Test-JarContainsModId $_.FullName $ModId
+})
 $DeletedOldJars = @()
 foreach ($jar in $OldJars) {
-    $jarMetadata = Get-JarMetadata $jar.FullName
-    if ($jarMetadata -match "modId\s*=\s*`"$([regex]::Escape($ModId))`"") {
-        $DeletedOldJars += $jar.FullName
-        Remove-Item -LiteralPath $jar.FullName -Force
-    }
+    $DeletedOldJars += $jar.FullName
+    Remove-Item -LiteralPath $jar.FullName -Force
 }
 
 $TargetJar = Join-Path $ModsDir (Split-Path -Leaf $BuiltJar)
@@ -170,8 +179,8 @@ $SourceHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $BuiltJar).Hash
 $TargetHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $TargetJar).Hash
 $SourceItem = Get-Item -LiteralPath $BuiltJar
 $TargetItem = Get-Item -LiteralPath $TargetJar
-$Remaining = @(Get-ChildItem -LiteralPath $ModsDir -Filter "$ModId*.jar" -File | Where-Object {
-    (Get-JarMetadata $_.FullName) -match "modId\s*=\s*`"$([regex]::Escape($ModId))`""
+$Remaining = @(Get-ChildItem -LiteralPath $ModsDir -Filter "*.jar" -File | Where-Object {
+    Test-JarContainsModId $_.FullName $ModId
 })
 
 $Report = [ordered]@{
