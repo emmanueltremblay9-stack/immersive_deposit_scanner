@@ -12,12 +12,17 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 public final class ImmersiveDepositScannerCommands {
+    public static final String PRIMARY_ROOT = "ids";
+    public static final String LONG_ROOT = "immersivedepositscanner";
+    public static final String LEGACY_ROOT = "mst";
+
     private ImmersiveDepositScannerCommands() {
     }
 
     public static void register(RegisterCommandsEvent event) {
-        registerRoot(event.getDispatcher(), "mst");
-        registerRoot(event.getDispatcher(), "immersivedepositscanner");
+        registerRoot(event.getDispatcher(), PRIMARY_ROOT);
+        registerRoot(event.getDispatcher(), LONG_ROOT);
+        registerRoot(event.getDispatcher(), LEGACY_ROOT);
     }
 
     private static void registerRoot(CommandDispatcher<CommandSourceStack> dispatcher, String root) {
@@ -90,9 +95,8 @@ public final class ImmersiveDepositScannerCommands {
         return removed;
     }
 
-    private static int clearAll(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
-        ServerPlayer player = source.getPlayerOrException();
-        DepositTrackingService.clearAll(player);
+    private static int clearAll(CommandSourceStack source) {
+        DepositTrackingService.clearAll(source.getServer());
         source.sendSuccess(() -> Component.translatable("commands.immersive_deposit_scanner.clear.all"), true);
         return 1;
     }

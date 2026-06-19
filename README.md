@@ -15,18 +15,18 @@ JourneyMap, Immersive Engineering, and Immersive Petroleum are declared as requi
 
 ## Commands
 
-- `/mst list`
-- `/mst list ie`
-- `/mst list ip`
-- `/mst list currentchunk`
-- `/mst scanheld`
-- `/mst resync`
-- `/mst remove currentchunk`
-- `/mst clear mine`
-- `/mst clear all` - operator level 2
-- `/mst debug heldsample` - operator level 2
+- `/ids list`
+- `/ids list ie`
+- `/ids list ip`
+- `/ids list currentchunk`
+- `/ids scanheld`
+- `/ids resync`
+- `/ids remove currentchunk`
+- `/ids clear mine`
+- `/ids clear all` - operator level 2
+- `/ids debug heldsample` - operator level 2
 
-Alias: `/immersivedepositscanner`.
+Aliases: `/immersivedepositscanner`, `/mst`.
 
 ## Build
 
@@ -45,4 +45,3 @@ For a verified Prism LAB install:
 ## Clean-Room Policy
 
 This project does not copy code, textures, language files, class names, or assets from Mineral Tracker, JourneyMap, Immersive Engineering, or Immersive Petroleum. See [docs/CLEAN_ROOM.md](docs/CLEAN_ROOM.md).
-

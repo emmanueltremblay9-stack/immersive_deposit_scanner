@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
@@ -95,8 +96,12 @@ public final class DepositTrackingService {
     }
 
     public static void clearAll(ServerPlayer player) {
-        ImmersiveDepositSavedData.get(player.server).clearAll();
-        for (ServerPlayer target : player.server.getPlayerList().getPlayers()) {
+        clearAll(player.server);
+    }
+
+    public static void clearAll(MinecraftServer server) {
+        ImmersiveDepositSavedData.get(server).clearAll();
+        for (ServerPlayer target : server.getPlayerList().getPlayers()) {
             NetworkHandler.sendToPlayer(target, new DepositClearPayload());
         }
     }

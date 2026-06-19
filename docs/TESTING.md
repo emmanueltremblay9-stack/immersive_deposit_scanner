@@ -24,5 +24,5 @@ Runtime validation should cover:
 - dedicated server startup with all required dependencies
 - expected NeoForge dependency failure when any required dependency is absent
 - held-sample scan
-- full sync after login and `/mst resync`
+- full sync after login and `/ids resync`
 - JourneyMap marker cleanup when disconnecting or changing servers
