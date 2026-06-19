@@ -12,6 +12,9 @@ import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncBatchPay
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncEndPayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncStartPayload;
 import com.oblixorprime.immersivedepositscanner.tracking.DepositTrackingService;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +33,8 @@ public final class DataModelQa {
     }
 
     public static void main(String[] args) {
+        assertCommonNetworkHandlerDoesNotDirectlyLinkClientHandlers();
+
         UUID player = UUID.fromString("00000000-0000-0000-0000-000000000001");
         UUID secondPlayer = UUID.fromString("00000000-0000-0000-0000-000000000002");
         TrackedDepositKey ieKey = new TrackedDepositKey(
@@ -134,6 +139,26 @@ public final class DataModelQa {
         ClientDepositCache.remove(ieKey);
         ClientDepositCache.finishSync(removeSyncId);
         assertEquals(0, ClientDepositCache.getAll().size(), "in-flight removes must not be restored by full sync finish");
+    }
+
+    private static void assertCommonNetworkHandlerDoesNotDirectlyLinkClientHandlers() {
+        String source;
+        try {
+            source = Files.readString(Path.of(
+                    "src/main/java/com/oblixorprime/immersivedepositscanner/network/NetworkHandler.java"
+            ));
+        } catch (IOException exception) {
+            throw new AssertionError("network handler source must be readable for side-boundary QA", exception);
+        }
+
+        assertTrue(
+                !source.contains("import com.oblixorprime.immersivedepositscanner.client."),
+                "common network handler must not import client package classes"
+        );
+        assertTrue(
+                !source.contains("ClientPayloadHandlers.handle("),
+                "common network handler must not directly invoke client payload handlers"
+        );
     }
 
     private static TrackedDeposit deposit(TrackedDepositKey key, DepositKind kind, String name, UUID player, long time) {

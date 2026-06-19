@@ -1,7 +1,6 @@
 package com.oblixorprime.immersivedepositscanner.network;
 
 import com.oblixorprime.immersivedepositscanner.ImmersiveDepositScanner;
-import com.oblixorprime.immersivedepositscanner.client.ClientPayloadHandlers;
 import com.oblixorprime.immersivedepositscanner.network.payload.DepositClearPayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.DepositRemovePayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.DepositUpsertPayload;
@@ -10,6 +9,7 @@ import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncEndPaylo
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncStartPayload;
 import com.oblixorprime.immersivedepositscanner.network.payload.RequestResyncPayload;
 import com.oblixorprime.immersivedepositscanner.tracking.DepositTrackingService;
+import java.lang.reflect.InvocationTargetException;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -17,6 +17,8 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 public final class NetworkHandler {
+    private static final String CLIENT_PAYLOAD_HANDLERS_CLASS =
+            "com.oblixorprime.immersivedepositscanner.client.ClientPayloadHandlers";
     private static final String PROTOCOL_VERSION = "1";
 
     private NetworkHandler() {
@@ -38,27 +40,27 @@ public final class NetworkHandler {
     }
 
     private static void handleFullSyncStart(FullSyncStartPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> ClientPayloadHandlers.handle(payload));
+        context.enqueueWork(() -> dispatchClientPayload(payload));
     }
 
     private static void handleFullSyncBatch(FullSyncBatchPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> ClientPayloadHandlers.handle(payload));
+        context.enqueueWork(() -> dispatchClientPayload(payload));
     }
 
     private static void handleFullSyncEnd(FullSyncEndPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> ClientPayloadHandlers.handle(payload));
+        context.enqueueWork(() -> dispatchClientPayload(payload));
     }
 
     private static void handleDepositUpsert(DepositUpsertPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> ClientPayloadHandlers.handle(payload));
+        context.enqueueWork(() -> dispatchClientPayload(payload));
     }
 
     private static void handleDepositRemove(DepositRemovePayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> ClientPayloadHandlers.handle(payload));
+        context.enqueueWork(() -> dispatchClientPayload(payload));
     }
 
     private static void handleDepositClear(DepositClearPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> ClientPayloadHandlers.handle(payload));
+        context.enqueueWork(() -> dispatchClientPayload(payload));
     }
 
     private static void handleRequestResync(RequestResyncPayload payload, IPayloadContext context) {
@@ -68,5 +70,23 @@ public final class NetworkHandler {
             }
         });
     }
-}
 
+    private static void dispatchClientPayload(Object payload) {
+        try {
+            Class<?> handlers = Class.forName(CLIENT_PAYLOAD_HANDLERS_CLASS);
+            handlers.getMethod("handle", payload.getClass()).invoke(null, payload);
+        } catch (ReflectiveOperationException exception) {
+            Throwable cause = exception instanceof InvocationTargetException invocationTargetException
+                    && invocationTargetException.getCause() != null
+                    ? invocationTargetException.getCause()
+                    : exception;
+            if (cause instanceof RuntimeException runtimeException) {
+                throw runtimeException;
+            }
+            if (cause instanceof Error error) {
+                throw error;
+            }
+            throw new IllegalStateException("Unable to dispatch IDS client payload " + payload.getClass().getName(), cause);
+        }
+    }
+}
