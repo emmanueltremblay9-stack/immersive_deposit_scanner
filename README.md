@@ -42,6 +42,12 @@ For a verified Prism LAB install:
 .\install-mod.ps1
 ```
 
+Release notes are tracked in [CHANGELOG.md](CHANGELOG.md). For an explicit LAB target:
+
+```powershell
+.\install-mod.ps1 -ModsDir 'C:\Users\Emmanuel Tremblay\AppData\Roaming\PrismLauncher\instances\1.21.1 TesT LaB\minecraft\mods'
+```
+
 ## Clean-Room Policy
 
 This project does not copy code, textures, language files, class names, or assets from Mineral Tracker, JourneyMap, Immersive Engineering, or Immersive Petroleum. See [docs/CLEAN_ROOM.md](docs/CLEAN_ROOM.md).

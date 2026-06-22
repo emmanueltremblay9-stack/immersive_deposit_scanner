@@ -33,7 +33,7 @@ public final class IPReservoirReader {
         long now = Instant.now().toEpochMilli();
 
         ISurveyInfo surveyInfo = ISurveyInfo.from(stack);
-        if (surveyInfo instanceof ReservoirInfo reservoirInfo) {
+        if (surveyInfo instanceof ReservoirInfo reservoirInfo && isUsableReservoirInfo(reservoirInfo)) {
             IPReservoirDiscovery discovery = fromReservoirInfo(level, player, now, reservoirInfo);
             discoveries.put(discovery.deposit().key(), discovery);
         }
@@ -53,6 +53,10 @@ public final class IPReservoirReader {
         }
 
         return List.copyOf(discoveries.values());
+    }
+
+    static boolean isUsableReservoirInfo(ReservoirInfo info) {
+        return info != null && info.fluidStack() != null && !info.fluidStack().isEmpty();
     }
 
     private static IPReservoirDiscovery fromReservoirInfo(ServerLevel level, ServerPlayer player, long now, ReservoirInfo info) {

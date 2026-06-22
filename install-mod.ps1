@@ -88,9 +88,75 @@ function Get-JarMetadata([string]$JarPath) {
     }
 }
 
+function Get-TomlStringValue([string]$Block, [string]$Name) {
+    $match = [regex]::Match($Block, "(?m)^\s*$([regex]::Escape($Name))\s*=\s*`"([^`"]*)`"")
+    if ($match.Success) {
+        return $match.Groups[1].Value
+    }
+    return $null
+}
+
+function Get-TomlArrayBlocks([string]$Metadata, [string]$Header) {
+    $blocks = New-Object System.Collections.Generic.List[string]
+    $pattern = "(?ms)^\s*\[\[$([regex]::Escape($Header))\]\]\s*(.*?)(?=^\s*\[\[|\z)"
+    foreach ($match in [regex]::Matches($Metadata, $pattern)) {
+        [void]$blocks.Add($match.Groups[1].Value)
+    }
+    return $blocks.ToArray()
+}
+
+function Test-MetadataDeclaresOwnModId([string]$Metadata, [string]$ModId) {
+    foreach ($block in Get-TomlArrayBlocks $Metadata "mods") {
+        if ((Get-TomlStringValue $block "modId") -eq $ModId) {
+            return $true
+        }
+    }
+    return $false
+}
+
+function Test-MetadataDeclaresOwnModVersion([string]$Metadata, [string]$ModId, [string]$Version) {
+    foreach ($block in Get-TomlArrayBlocks $Metadata "mods") {
+        if ((Get-TomlStringValue $block "modId") -eq $ModId -and (Get-TomlStringValue $block "version") -eq $Version) {
+            return $true
+        }
+    }
+    return $false
+}
+
 function Test-JarContainsModId([string]$JarPath, [string]$ModId) {
     $jarMetadata = Get-JarMetadata $JarPath
-    return $jarMetadata -match "modId\s*=\s*`"$([regex]::Escape($ModId))`""
+    return Test-MetadataDeclaresOwnModId $jarMetadata $ModId
+}
+
+function Get-RequiredDependencyModIds([string]$Metadata, [string]$OwnModId) {
+    $dependencies = New-Object System.Collections.Generic.List[string]
+    foreach ($block in Get-TomlArrayBlocks $Metadata "dependencies.$OwnModId") {
+        $dependencyModId = Get-TomlStringValue $block "modId"
+        $type = Get-TomlStringValue $block "type"
+        if ($type -eq "required" -and
+                -not [string]::IsNullOrWhiteSpace($dependencyModId) -and
+                $dependencyModId -ne $OwnModId -and
+                $dependencyModId -ne "minecraft" -and
+                $dependencyModId -ne "neoforge") {
+            [void]$dependencies.Add($dependencyModId)
+        }
+    }
+    return @($dependencies.ToArray() | Sort-Object -Unique)
+}
+
+function Test-MetadataDeclaresRequiredDependency([string]$Metadata, [string]$OwnModId, [string]$DependencyModId) {
+    foreach ($block in Get-TomlArrayBlocks $Metadata "dependencies.$OwnModId") {
+        if ((Get-TomlStringValue $block "modId") -eq $DependencyModId -and (Get-TomlStringValue $block "type") -eq "required") {
+            return $true
+        }
+    }
+    return $false
+}
+
+function Find-JarsDeclaringModId([string]$ModsDir, [string]$ModId) {
+    return @(Get-ChildItem -LiteralPath $ModsDir -Filter "*.jar" -File | Where-Object {
+        Test-JarContainsModId $_.FullName $ModId
+    })
 }
 
 $ProjectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -159,13 +225,12 @@ if ($Candidates.Count -eq 0) {
 
 $BuiltJar = $Candidates[0].FullName
 $Metadata = Get-JarMetadata $BuiltJar
-if ($Metadata -notmatch "modId\s*=\s*`"$([regex]::Escape($ModId))`"" -or $Metadata -notmatch "version\s*=\s*`"$([regex]::Escape($NewVersion))`"") {
+if (-not (Test-MetadataDeclaresOwnModVersion $Metadata $ModId $NewVersion)) {
     throw "Built jar metadata does not contain expected mod id $ModId and version $NewVersion."
 }
+$RequiredDependencyModIds = Get-RequiredDependencyModIds $Metadata $ModId
 
-$OldJars = @(Get-ChildItem -LiteralPath $ModsDir -Filter "*.jar" -File | Where-Object {
-    Test-JarContainsModId $_.FullName $ModId
-})
+$OldJars = Find-JarsDeclaringModId $ModsDir $ModId
 $DeletedOldJars = @()
 foreach ($jar in $OldJars) {
     $DeletedOldJars += $jar.FullName
@@ -179,9 +244,20 @@ $SourceHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $BuiltJar).Hash
 $TargetHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $TargetJar).Hash
 $SourceItem = Get-Item -LiteralPath $BuiltJar
 $TargetItem = Get-Item -LiteralPath $TargetJar
-$Remaining = @(Get-ChildItem -LiteralPath $ModsDir -Filter "*.jar" -File | Where-Object {
-    Test-JarContainsModId $_.FullName $ModId
-})
+$Remaining = Find-JarsDeclaringModId $ModsDir $ModId
+$RequiredDependencies = @()
+$MissingRequiredDependencies = @()
+foreach ($dependencyModId in $RequiredDependencyModIds) {
+    $dependencyJars = Find-JarsDeclaringModId $ModsDir $dependencyModId
+    $RequiredDependencies += [ordered]@{
+        ModId = $dependencyModId
+        Present = ($dependencyJars.Count -gt 0)
+        InstalledJars = @($dependencyJars | ForEach-Object { $_.FullName })
+    }
+    if ($dependencyJars.Count -eq 0) {
+        $MissingRequiredDependencies += $dependencyModId
+    }
+}
 
 $Report = [ordered]@{
     ModId = $ModId
@@ -197,11 +273,15 @@ $Report = [ordered]@{
     HashesMatch = ($SourceHash -eq $TargetHash)
     RemainingJarsForMod = $Remaining.Count
     OnlyInstalledJarRemains = ($Remaining.Count -eq 1 -and $Remaining[0].FullName -eq $TargetJar)
-    MetadataContainsModId = ($Metadata -match "modId\s*=\s*`"$([regex]::Escape($ModId))`"")
-    MetadataContainsVersion = ($Metadata -match "version\s*=\s*`"$([regex]::Escape($NewVersion))`"")
-    MetadataContainsJourneyMapRequired = ($Metadata -match "modId\s*=\s*`"journeymap`"[\s\S]*?type\s*=\s*`"required`"")
-    MetadataContainsIERequired = ($Metadata -match "modId\s*=\s*`"immersiveengineering`"[\s\S]*?type\s*=\s*`"required`"")
-    MetadataContainsIPRequired = ($Metadata -match "modId\s*=\s*`"immersivepetroleum`"[\s\S]*?type\s*=\s*`"required`"")
+    MetadataContainsModId = (Test-MetadataDeclaresOwnModId $Metadata $ModId)
+    MetadataContainsVersion = (Test-MetadataDeclaresOwnModVersion $Metadata $ModId $NewVersion)
+    MetadataContainsJourneyMapRequired = (Test-MetadataDeclaresRequiredDependency $Metadata $ModId "journeymap")
+    MetadataContainsIERequired = (Test-MetadataDeclaresRequiredDependency $Metadata $ModId "immersiveengineering")
+    MetadataContainsIPRequired = (Test-MetadataDeclaresRequiredDependency $Metadata $ModId "immersivepetroleum")
+    RequiredDependencyModIds = $RequiredDependencyModIds
+    RequiredDependencies = $RequiredDependencies
+    MissingRequiredDependencies = $MissingRequiredDependencies
+    RequiredDependenciesPresent = ($MissingRequiredDependencies.Count -eq 0)
 }
 
 $ReportDir = Join-Path $ProjectRoot "build"
@@ -209,7 +289,12 @@ New-Item -ItemType Directory -Force -Path $ReportDir | Out-Null
 $ReportPath = Join-Path $ReportDir "install-report.json"
 $Report | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $ReportPath -Encoding UTF8
 
-if (-not $Report.HashesMatch -or -not $Report.OnlyInstalledJarRemains) {
+if (-not $Report.HashesMatch -or
+        -not $Report.OnlyInstalledJarRemains -or
+        -not $Report.MetadataContainsJourneyMapRequired -or
+        -not $Report.MetadataContainsIERequired -or
+        -not $Report.MetadataContainsIPRequired -or
+        -not $Report.RequiredDependenciesPresent) {
     throw "Install verification failed. See $ReportPath"
 }
 

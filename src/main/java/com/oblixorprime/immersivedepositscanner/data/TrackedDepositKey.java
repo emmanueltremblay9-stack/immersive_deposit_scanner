@@ -6,9 +6,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
+import java.util.Locale;
 import java.util.Objects;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
@@ -83,15 +85,39 @@ public record TrackedDepositKey(
     }
 
     public static TrackedDepositKey fromTag(CompoundTag tag) {
-        ResourceLocation dimension = ResourceLocation.parse(tag.getString("dimension"));
-        ResourceLocation depositId = ResourceLocation.parse(tag.getString("depositId"));
+        ResourceLocation dimension = ResourceLocation.parse(requireString(tag, "dimension"));
+        ResourceLocation depositId = ResourceLocation.parse(requireString(tag, "depositId"));
         return new TrackedDepositKey(
                 ResourceKey.create(Registries.DIMENSION, dimension),
-                tag.getInt("chunkX"),
-                tag.getInt("chunkZ"),
-                DepositSource.fromSerializedName(tag.getString("source")),
+                requireInt(tag, "chunkX"),
+                requireInt(tag, "chunkZ"),
+                requireSource(tag),
                 depositId
         );
+    }
+
+    private static int requireInt(CompoundTag tag, String fieldName) {
+        if (!tag.contains(fieldName, Tag.TAG_INT)) {
+            throw new IllegalArgumentException("Missing or invalid deposit key field: " + fieldName);
+        }
+        return tag.getInt(fieldName);
+    }
+
+    private static String requireString(CompoundTag tag, String fieldName) {
+        if (!tag.contains(fieldName, Tag.TAG_STRING)) {
+            throw new IllegalArgumentException("Missing or invalid deposit key field: " + fieldName);
+        }
+        return tag.getString(fieldName);
+    }
+
+    private static DepositSource requireSource(CompoundTag tag) {
+        String normalized = requireString(tag, "source").toLowerCase(Locale.ROOT);
+        for (DepositSource source : DepositSource.values()) {
+            if (source.serializedName().equals(normalized) || source.name().toLowerCase(Locale.ROOT).equals(normalized)) {
+                return source;
+            }
+        }
+        throw new IllegalArgumentException("Unknown deposit source: " + normalized);
     }
 }
 

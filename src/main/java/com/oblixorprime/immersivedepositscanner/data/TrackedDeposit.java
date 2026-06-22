@@ -3,6 +3,7 @@ package com.oblixorprime.immersivedepositscanner.data;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
@@ -10,6 +11,7 @@ import java.util.OptionalLong;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -110,9 +112,10 @@ public record TrackedDeposit(
         resourceId = resourceId == null ? Optional.empty() : resourceId;
         samplePosition = samplePosition == null ? Optional.empty() : samplePosition;
         Objects.requireNonNull(discoveredBy, "discoveredBy");
-        currentAmount = currentAmount == null ? OptionalLong.empty() : currentAmount;
-        maximumAmount = maximumAmount == null ? OptionalLong.empty() : maximumAmount;
-        percentageRemaining = percentageRemaining == null ? OptionalDouble.empty() : percentageRemaining;
+        updatedAt = Math.max(updatedAt, discoveredAt);
+        currentAmount = normalizeOptionalAmount(currentAmount);
+        maximumAmount = normalizeOptionalAmount(maximumAmount);
+        percentageRemaining = normalizeOptionalPercentage(percentageRemaining);
     }
 
     public TrackedDeposit preservingFirstDiscovery(TrackedDeposit existing) {
@@ -154,18 +157,18 @@ public record TrackedDeposit(
     }
 
     public static TrackedDeposit fromTag(CompoundTag tag) {
-        Optional<ResourceLocation> resourceId = tag.contains("resourceId")
+        Optional<ResourceLocation> resourceId = tag.contains("resourceId", Tag.TAG_STRING)
                 ? Optional.of(ResourceLocation.parse(tag.getString("resourceId")))
                 : Optional.empty();
-        Optional<BlockPos> samplePosition = tag.contains("sampleX")
+        Optional<BlockPos> samplePosition = hasCompleteSamplePosition(tag)
                 ? Optional.of(new BlockPos(tag.getInt("sampleX"), tag.getInt("sampleY"), tag.getInt("sampleZ")))
                 : Optional.empty();
-        OptionalLong currentAmount = tag.contains("currentAmount") ? OptionalLong.of(tag.getLong("currentAmount")) : OptionalLong.empty();
-        OptionalLong maximumAmount = tag.contains("maximumAmount") ? OptionalLong.of(tag.getLong("maximumAmount")) : OptionalLong.empty();
-        OptionalDouble percentageRemaining = tag.contains("percentageRemaining") ? OptionalDouble.of(tag.getDouble("percentageRemaining")) : OptionalDouble.empty();
+        OptionalLong currentAmount = readOptionalLongTag(tag, "currentAmount");
+        OptionalLong maximumAmount = readOptionalLongTag(tag, "maximumAmount");
+        OptionalDouble percentageRemaining = readOptionalDoubleTag(tag, "percentageRemaining");
         return new TrackedDeposit(
                 TrackedDepositKey.fromTag(tag.getCompound("key")),
-                DepositKind.fromSerializedName(tag.getString("kind")),
+                requireKind(tag),
                 tag.getString("displayName"),
                 resourceId,
                 samplePosition,
@@ -177,6 +180,37 @@ public record TrackedDeposit(
                 percentageRemaining,
                 tag.getBoolean("depleted")
         );
+    }
+
+    private static boolean hasCompleteSamplePosition(CompoundTag tag) {
+        return tag.contains("sampleX", Tag.TAG_INT)
+                && tag.contains("sampleY", Tag.TAG_INT)
+                && tag.contains("sampleZ", Tag.TAG_INT);
+    }
+
+    private static OptionalLong readOptionalLongTag(CompoundTag tag, String fieldName) {
+        return tag.contains(fieldName, Tag.TAG_LONG) ? OptionalLong.of(tag.getLong(fieldName)) : OptionalLong.empty();
+    }
+
+    private static OptionalDouble readOptionalDoubleTag(CompoundTag tag, String fieldName) {
+        return tag.contains(fieldName, Tag.TAG_DOUBLE) ? OptionalDouble.of(tag.getDouble(fieldName)) : OptionalDouble.empty();
+    }
+
+    private static DepositKind requireKind(CompoundTag tag) {
+        String normalized = requireString(tag, "kind").toLowerCase(Locale.ROOT);
+        for (DepositKind kind : DepositKind.values()) {
+            if (kind.serializedName().equals(normalized) || kind.name().toLowerCase(Locale.ROOT).equals(normalized)) {
+                return kind;
+            }
+        }
+        throw new IllegalArgumentException("Unknown deposit kind: " + normalized);
+    }
+
+    private static String requireString(CompoundTag tag, String fieldName) {
+        if (!tag.contains(fieldName, Tag.TAG_STRING)) {
+            throw new IllegalArgumentException("Missing or invalid deposit field: " + fieldName);
+        }
+        return tag.getString(fieldName);
     }
 
     public static String normalizeDisplayName(String value) {
@@ -198,6 +232,24 @@ public record TrackedDeposit(
 
     private static OptionalDouble optionalDouble(Optional<Double> value) {
         return value.map(OptionalDouble::of).orElseGet(OptionalDouble::empty);
+    }
+
+    private static OptionalLong normalizeOptionalAmount(OptionalLong value) {
+        if (value == null || value.isEmpty() || value.getAsLong() < 0L) {
+            return OptionalLong.empty();
+        }
+        return value;
+    }
+
+    private static OptionalDouble normalizeOptionalPercentage(OptionalDouble value) {
+        if (value == null || value.isEmpty()) {
+            return OptionalDouble.empty();
+        }
+        double percentage = value.getAsDouble();
+        if (!Double.isFinite(percentage) || percentage < 0.0D || percentage > 1.0D) {
+            return OptionalDouble.empty();
+        }
+        return value;
     }
 
     private static Optional<ResourceLocation> readOptionalResourceLocation(RegistryFriendlyByteBuf buffer) {
