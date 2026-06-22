@@ -6,8 +6,10 @@ import com.oblixorprime.immersivedepositscanner.data.TrackedDeposit;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDepositKey;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceKey;
@@ -16,6 +18,8 @@ import net.minecraft.world.level.Level;
 public final class ClientDepositCache {
     private static final Map<TrackedDepositKey, TrackedDeposit> DEPOSITS = new LinkedHashMap<>();
     private static final Map<TrackedDepositKey, TrackedDeposit> SYNC_STAGING = new LinkedHashMap<>();
+    private static final Map<TrackedDepositKey, TrackedDeposit> SYNC_LIVE_UPSERTS = new LinkedHashMap<>();
+    private static final Set<TrackedDepositKey> SYNC_LIVE_REMOVES = new LinkedHashSet<>();
     private static UUID activeSyncId;
     private static int expectedSyncDeposits = -1;
 
@@ -26,6 +30,8 @@ public final class ClientDepositCache {
         activeSyncId = syncId;
         expectedSyncDeposits = expectedDeposits;
         SYNC_STAGING.clear();
+        SYNC_LIVE_UPSERTS.clear();
+        SYNC_LIVE_REMOVES.clear();
     }
 
     public static void acceptBatch(UUID syncId, Collection<TrackedDeposit> deposits) {
@@ -46,23 +52,22 @@ public final class ClientDepositCache {
                     expectedSyncDeposits,
                     SYNC_STAGING.size()
             );
-            SYNC_STAGING.clear();
-            activeSyncId = null;
-            expectedSyncDeposits = -1;
+            clearSyncState();
             return;
         }
         DEPOSITS.clear();
         DEPOSITS.putAll(SYNC_STAGING);
-        SYNC_STAGING.clear();
-        activeSyncId = null;
-        expectedSyncDeposits = -1;
+        SYNC_LIVE_REMOVES.forEach(DEPOSITS::remove);
+        DEPOSITS.putAll(SYNC_LIVE_UPSERTS);
+        clearSyncState();
         JourneyMapDepositManager.replaceAll(DEPOSITS.values());
     }
 
     public static void upsert(TrackedDeposit deposit) {
         DEPOSITS.put(deposit.key(), deposit);
         if (activeSyncId != null) {
-            SYNC_STAGING.put(deposit.key(), deposit);
+            SYNC_LIVE_REMOVES.remove(deposit.key());
+            SYNC_LIVE_UPSERTS.put(deposit.key(), deposit);
         }
         JourneyMapDepositManager.upsert(deposit);
     }
@@ -70,16 +75,15 @@ public final class ClientDepositCache {
     public static void remove(TrackedDepositKey key) {
         DEPOSITS.remove(key);
         if (activeSyncId != null) {
-            SYNC_STAGING.remove(key);
+            SYNC_LIVE_UPSERTS.remove(key);
+            SYNC_LIVE_REMOVES.add(key);
         }
         JourneyMapDepositManager.remove(key);
     }
 
     public static void clear() {
         DEPOSITS.clear();
-        SYNC_STAGING.clear();
-        activeSyncId = null;
-        expectedSyncDeposits = -1;
+        clearSyncState();
         JourneyMapDepositManager.clearAll();
     }
 
@@ -96,5 +100,13 @@ public final class ClientDepositCache {
         return DEPOSITS.values().stream()
                 .filter(deposit -> deposit.key().dimension().equals(dimension))
                 .toList();
+    }
+
+    private static void clearSyncState() {
+        SYNC_STAGING.clear();
+        SYNC_LIVE_UPSERTS.clear();
+        SYNC_LIVE_REMOVES.clear();
+        activeSyncId = null;
+        expectedSyncDeposits = -1;
     }
 }

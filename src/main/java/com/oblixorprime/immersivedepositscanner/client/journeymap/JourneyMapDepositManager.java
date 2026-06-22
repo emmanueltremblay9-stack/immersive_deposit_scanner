@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import journeymap.api.v2.client.IClientAPI;
+import journeymap.api.v2.client.display.Displayable;
 import journeymap.api.v2.client.display.MarkerOverlay;
 import journeymap.api.v2.client.display.PolygonOverlay;
 import journeymap.api.v2.common.waypoint.Waypoint;
@@ -44,8 +45,9 @@ public final class JourneyMapDepositManager {
         if (JourneyMapMarkerFactory.shouldShow(deposit)) {
             if (ClientConfig.ENABLE_WAYPOINTS.get()) {
                 Waypoint waypoint = JourneyMapMarkerFactory.createWaypoint(deposit);
-                WAYPOINTS.put(deposit.key(), waypoint);
-                api.addWaypoint(ImmersiveDepositScanner.MOD_ID, waypoint);
+                if (addWaypoint(waypoint)) {
+                    WAYPOINTS.put(deposit.key(), waypoint);
+                }
             }
             MarkerOverlay marker = JourneyMapMarkerFactory.createMarker(deposit);
             MARKERS.put(deposit.key(), marker);
@@ -64,15 +66,15 @@ public final class JourneyMapDepositManager {
         }
         MarkerOverlay marker = MARKERS.remove(key);
         if (marker != null) {
-            api.remove(marker);
+            remove(marker);
         }
         PolygonOverlay overlay = OVERLAYS.remove(key);
         if (overlay != null) {
-            api.remove(overlay);
+            remove(overlay);
         }
         Waypoint waypoint = WAYPOINTS.remove(key);
         if (waypoint != null) {
-            api.removeWaypoint(ImmersiveDepositScanner.MOD_ID, waypoint);
+            removeWaypoint(waypoint);
         }
     }
 
@@ -83,17 +85,59 @@ public final class JourneyMapDepositManager {
             WAYPOINTS.clear();
             return;
         }
-        MARKERS.values().forEach(api::remove);
-        OVERLAYS.values().forEach(api::remove);
-        WAYPOINTS.values().forEach(waypoint -> api.removeWaypoint(ImmersiveDepositScanner.MOD_ID, waypoint));
+        MARKERS.values().forEach(JourneyMapDepositManager::remove);
+        OVERLAYS.values().forEach(JourneyMapDepositManager::remove);
+        WAYPOINTS.values().forEach(JourneyMapDepositManager::removeWaypoint);
         MARKERS.clear();
         OVERLAYS.clear();
         WAYPOINTS.clear();
-        api.removeAll(ImmersiveDepositScanner.MOD_ID);
-        api.removeAllWaypoints(ImmersiveDepositScanner.MOD_ID);
+        removeAll();
+        removeAllWaypoints();
     }
 
-    private static void show(journeymap.api.v2.client.display.Displayable displayable) {
+    private static boolean addWaypoint(Waypoint waypoint) {
+        try {
+            api.addWaypoint(ImmersiveDepositScanner.MOD_ID, waypoint);
+            return true;
+        } catch (Exception exception) {
+            ImmersiveDepositScanner.LOGGER.warn("Unable to add JourneyMap waypoint {}", waypoint.getGuid(), exception);
+            return false;
+        }
+    }
+
+    private static void remove(Displayable displayable) {
+        try {
+            api.remove(displayable);
+        } catch (Exception exception) {
+            ImmersiveDepositScanner.LOGGER.warn("Unable to remove JourneyMap display {}", displayable.getGuid(), exception);
+        }
+    }
+
+    private static void removeWaypoint(Waypoint waypoint) {
+        try {
+            api.removeWaypoint(ImmersiveDepositScanner.MOD_ID, waypoint);
+        } catch (Exception exception) {
+            ImmersiveDepositScanner.LOGGER.warn("Unable to remove JourneyMap waypoint {}", waypoint.getGuid(), exception);
+        }
+    }
+
+    private static void removeAll() {
+        try {
+            api.removeAll(ImmersiveDepositScanner.MOD_ID);
+        } catch (Exception exception) {
+            ImmersiveDepositScanner.LOGGER.warn("Unable to remove all JourneyMap displays for {}", ImmersiveDepositScanner.MOD_ID, exception);
+        }
+    }
+
+    private static void removeAllWaypoints() {
+        try {
+            api.removeAllWaypoints(ImmersiveDepositScanner.MOD_ID);
+        } catch (Exception exception) {
+            ImmersiveDepositScanner.LOGGER.warn("Unable to remove all JourneyMap waypoints for {}", ImmersiveDepositScanner.MOD_ID, exception);
+        }
+    }
+
+    private static void show(Displayable displayable) {
         try {
             api.show(displayable);
         } catch (Exception exception) {

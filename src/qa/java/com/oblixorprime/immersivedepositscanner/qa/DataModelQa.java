@@ -1,6 +1,7 @@
 package com.oblixorprime.immersivedepositscanner.qa;
 
 import com.oblixorprime.immersivedepositscanner.client.ClientDepositCache;
+import com.oblixorprime.immersivedepositscanner.client.journeymap.JourneyMapDepositManager;
 import com.oblixorprime.immersivedepositscanner.data.DepositKind;
 import com.oblixorprime.immersivedepositscanner.data.DepositSource;
 import com.oblixorprime.immersivedepositscanner.data.ImmersiveDepositSavedData;
@@ -14,6 +15,8 @@ import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncEndPaylo
 import com.oblixorprime.immersivedepositscanner.network.payload.FullSyncStartPayload;
 import com.oblixorprime.immersivedepositscanner.tracking.DepositTrackingService;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Proxy;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import journeymap.api.v2.client.IClientAPI;
 
 public final class DataModelQa {
     private DataModelQa() {
@@ -35,6 +39,7 @@ public final class DataModelQa {
 
     public static void main(String[] args) {
         assertCommonNetworkHandlerDoesNotDirectlyLinkClientHandlers();
+        assertJourneyMapCleanupToleratesApiFailures();
         IECoreSampleReaderQa.run();
 
         UUID player = UUID.fromString("00000000-0000-0000-0000-000000000001");
@@ -97,6 +102,21 @@ public final class DataModelQa {
         assertTrue(duplicateLoaded.canSee(ieKey, player), "duplicate load must keep first known player");
         assertTrue(duplicateLoaded.canSee(ieKey, secondPlayer), "duplicate load must merge later known player");
 
+        CompoundTag corruptSaved = new CompoundTag();
+        ListTag corruptEntries = new ListTag();
+        CompoundTag missingChunkEntry = ip.toTag();
+        missingChunkEntry.getCompound("key").remove("chunkZ");
+        corruptEntries.add(withKnownBy(missingChunkEntry, player));
+        CompoundTag unknownSourceEntry = ip.toTag();
+        unknownSourceEntry.getCompound("key").putString("source", "unknown_source");
+        corruptEntries.add(withKnownBy(unknownSourceEntry, player));
+        CompoundTag unknownKindEntry = ip.toTag();
+        unknownKindEntry.putString("kind", "unknown_kind");
+        corruptEntries.add(withKnownBy(unknownKindEntry, player));
+        corruptSaved.put("deposits", corruptEntries);
+        ImmersiveDepositSavedData corruptLoaded = ImmersiveDepositSavedData.load(corruptSaved, null);
+        assertEquals(0, corruptLoaded.getAll().size(), "corrupt saved entries must be skipped instead of loading as bogus deposits");
+
         assertEquals(1, data.clearForPlayer(secondPlayer), "clearing second player's data must remove their visibility");
         assertTrue(data.canSee(ieKey, player), "clearing one player must not remove another player's visibility");
         assertTrue(!data.canSee(ieKey, secondPlayer), "clearing one player must remove their personal visibility");
@@ -104,6 +124,37 @@ public final class DataModelQa {
 
         TrackedDeposit roundTrip = TrackedDeposit.fromTag(ip.toTag());
         assertTrue(roundTrip.equals(ip), "deposit NBT round-trip should preserve data");
+        CompoundTag partialSampleTag = ip.toTag();
+        partialSampleTag.remove("sampleY");
+        assertTrue(
+                TrackedDeposit.fromTag(partialSampleTag).samplePosition().isEmpty(),
+                "partial NBT sample positions must not create bogus coordinates"
+        );
+        CompoundTag wrongTypedAmounts = ip.toTag();
+        wrongTypedAmounts.putString("currentAmount", "10");
+        wrongTypedAmounts.putString("maximumAmount", "100");
+        wrongTypedAmounts.putString("percentageRemaining", "0.10");
+        TrackedDeposit wrongTypedAmountRoundTrip = TrackedDeposit.fromTag(wrongTypedAmounts);
+        assertTrue(wrongTypedAmountRoundTrip.currentAmount().isEmpty(), "wrong-type current amounts must not load as zero");
+        assertTrue(wrongTypedAmountRoundTrip.maximumAmount().isEmpty(), "wrong-type maximum amounts must not load as zero");
+        assertTrue(wrongTypedAmountRoundTrip.percentageRemaining().isEmpty(), "wrong-type percentages must not load as zero");
+        TrackedDeposit invalidNumbers = depositWithNumbers(ieKey, DepositKind.MINERAL, "Invalid Numbers", player, 1000L,
+                OptionalLong.of(-1L), OptionalLong.of(-100L), OptionalDouble.of(Double.NaN));
+        assertTrue(invalidNumbers.currentAmount().isEmpty(), "negative current amounts must be discarded");
+        assertTrue(invalidNumbers.maximumAmount().isEmpty(), "negative maximum amounts must be discarded");
+        assertTrue(invalidNumbers.percentageRemaining().isEmpty(), "non-finite percentages must be discarded");
+        assertTrue(
+                depositWithNumbers(ieKey, DepositKind.MINERAL, "Negative Percentage", player,
+                        1000L, OptionalLong.of(1L), OptionalLong.of(100L), OptionalDouble.of(-0.1D)).percentageRemaining().isEmpty(),
+                "negative percentages must be discarded"
+        );
+        assertTrue(
+                depositWithNumbers(ieKey, DepositKind.MINERAL, "Oversized Percentage", player,
+                        1000L, OptionalLong.of(1L), OptionalLong.of(100L), OptionalDouble.of(1.1D)).percentageRemaining().isEmpty(),
+                "oversized percentages must be discarded"
+        );
+        TrackedDeposit outOfOrderTimes = depositWithTimes(ieKey, DepositKind.MINERAL, "Out Of Order Times", player, 5000L, 4000L);
+        assertEquals(5000L, outOfOrderTimes.updatedAt(), "updatedAt must not be earlier than discoveredAt");
 
         assertThrows(() -> new FullSyncStartPayload(UUID.randomUUID(), -1), "negative expected sync count must be rejected");
         assertThrows(
@@ -136,11 +187,85 @@ public final class DataModelQa {
         ClientDepositCache.finishSync(syncId);
         assertEquals("Live Update Mineral", ClientDepositCache.getAll().getFirst().displayName(), "in-flight upserts must survive full sync finish");
 
-        UUID removeSyncId = UUID.fromString("00000000-0000-0000-0000-000000000004");
+        UUID liveNewKeySyncId = UUID.fromString("00000000-0000-0000-0000-000000000004");
+        TrackedDeposit syncSnapshotDeposit = deposit(ieKey, DepositKind.MINERAL, "Snapshot Mineral", player, 6000L);
+        TrackedDeposit liveNewKeyDeposit = deposit(ipKey, DepositKind.FLUID_RESERVOIR, "Live New Reservoir", player, 7000L);
+        ClientDepositCache.clear();
+        ClientDepositCache.beginSync(liveNewKeySyncId, 1);
+        ClientDepositCache.acceptBatch(liveNewKeySyncId, List.of(syncSnapshotDeposit));
+        ClientDepositCache.upsert(liveNewKeyDeposit);
+        ClientDepositCache.finishSync(liveNewKeySyncId);
+        assertEquals(2, ClientDepositCache.getAll().size(), "live new-key upserts must not make a complete sync look incomplete");
+        assertCacheContains("Snapshot Mineral", "complete sync snapshot must still apply when a live new-key upsert arrives");
+        assertCacheContains("Live New Reservoir", "live new-key upsert must survive full sync finish");
+
+        UUID removeSyncId = UUID.fromString("00000000-0000-0000-0000-000000000005");
         ClientDepositCache.beginSync(removeSyncId, 0);
         ClientDepositCache.remove(ieKey);
         ClientDepositCache.finishSync(removeSyncId);
         assertEquals(0, ClientDepositCache.getAll().size(), "in-flight removes must not be restored by full sync finish");
+
+        UUID liveRemoveSyncId = UUID.fromString("00000000-0000-0000-0000-000000000006");
+        TrackedDeposit syncKeptDeposit = deposit(ipKey, DepositKind.FLUID_RESERVOIR, "Snapshot Reservoir", player, 8000L);
+        ClientDepositCache.clear();
+        ClientDepositCache.beginSync(liveRemoveSyncId, 2);
+        ClientDepositCache.acceptBatch(liveRemoveSyncId, List.of(syncSnapshotDeposit, syncKeptDeposit));
+        ClientDepositCache.remove(ieKey);
+        ClientDepositCache.finishSync(liveRemoveSyncId);
+        assertEquals(1, ClientDepositCache.getAll().size(), "live removes must not make a complete sync look incomplete");
+        assertCacheMissing("Snapshot Mineral", "live remove must win over a full-sync snapshot entry");
+        assertCacheContains("Snapshot Reservoir", "unremoved full-sync entries must still apply after a live remove");
+    }
+
+    private static void assertJourneyMapCleanupToleratesApiFailures() {
+        Field apiField;
+        Object originalApi;
+        try {
+            apiField = JourneyMapDepositManager.class.getDeclaredField("api");
+            apiField.setAccessible(true);
+            originalApi = apiField.get(null);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager API field must be reachable for cleanup QA", exception);
+        }
+
+        IClientAPI throwingApi = (IClientAPI) Proxy.newProxyInstance(
+                IClientAPI.class.getClassLoader(),
+                new Class<?>[]{IClientAPI.class},
+                (proxy, method, args) -> {
+                    if (method.getName().equals("removeAll") || method.getName().equals("removeAllWaypoints")) {
+                        throw new IllegalStateException("simulated JourneyMap cleanup failure");
+                    }
+                    return defaultValue(method.getReturnType());
+                }
+        );
+
+        try {
+            apiField.set(null, throwingApi);
+            JourneyMapDepositManager.clearAll();
+        } catch (RuntimeException exception) {
+            throw new AssertionError("JourneyMap cleanup failures must not escape cache cleanup", exception);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager API field must be writable for cleanup QA", exception);
+        } finally {
+            try {
+                apiField.set(null, originalApi);
+            } catch (ReflectiveOperationException exception) {
+                throw new AssertionError("JourneyMapDepositManager API field must be restorable after cleanup QA", exception);
+            }
+        }
+    }
+
+    private static Object defaultValue(Class<?> returnType) {
+        if (!returnType.isPrimitive() || returnType == Void.TYPE) {
+            return null;
+        }
+        if (returnType == Boolean.TYPE) {
+            return false;
+        }
+        if (returnType == Character.TYPE) {
+            return '\0';
+        }
+        return 0;
     }
 
     private static void assertCommonNetworkHandlerDoesNotDirectlyLinkClientHandlers() {
@@ -164,6 +289,19 @@ public final class DataModelQa {
     }
 
     private static TrackedDeposit deposit(TrackedDepositKey key, DepositKind kind, String name, UUID player, long time) {
+        return depositWithNumbers(key, kind, name, player, time, OptionalLong.of(10), OptionalLong.of(100), OptionalDouble.of(0.10D));
+    }
+
+    private static TrackedDeposit depositWithNumbers(
+            TrackedDepositKey key,
+            DepositKind kind,
+            String name,
+            UUID player,
+            long time,
+            OptionalLong currentAmount,
+            OptionalLong maximumAmount,
+            OptionalDouble percentageRemaining
+    ) {
         return new TrackedDeposit(
                 key,
                 kind,
@@ -173,6 +311,30 @@ public final class DataModelQa {
                 player,
                 time,
                 time,
+                currentAmount,
+                maximumAmount,
+                percentageRemaining,
+                false
+        );
+    }
+
+    private static TrackedDeposit depositWithTimes(
+            TrackedDepositKey key,
+            DepositKind kind,
+            String name,
+            UUID player,
+            long discoveredAt,
+            long updatedAt
+    ) {
+        return new TrackedDeposit(
+                key,
+                kind,
+                name,
+                Optional.of(key.depositId()),
+                Optional.of(new BlockPos(key.chunkX() * 16 + 8, 64, key.chunkZ() * 16 + 8)),
+                player,
+                discoveredAt,
+                updatedAt,
                 OptionalLong.of(10),
                 OptionalLong.of(100),
                 OptionalDouble.of(0.10D),
@@ -199,6 +361,14 @@ public final class DataModelQa {
         if (!expected.equals(actual)) {
             throw new AssertionError(message + " expected=" + expected + " actual=" + actual);
         }
+    }
+
+    private static void assertCacheContains(String displayName, String message) {
+        assertTrue(ClientDepositCache.getAll().stream().anyMatch(deposit -> displayName.equals(deposit.displayName())), message);
+    }
+
+    private static void assertCacheMissing(String displayName, String message) {
+        assertTrue(ClientDepositCache.getAll().stream().noneMatch(deposit -> displayName.equals(deposit.displayName())), message);
     }
 
     private static void assertThrows(Runnable action, String message) {
