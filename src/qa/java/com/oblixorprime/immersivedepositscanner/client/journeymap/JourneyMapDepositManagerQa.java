@@ -1,1 +1,543 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíóÎùN‹Z–‹­¦ëeŠw¬ÕÁ…­…”½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹±¥•¹Ğ¹©½ÕÉ¹•åµ…Àì()¥µÁ½ÉĞ½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹½¹™¥œ¹±¥•¹Ñ½¹™¥œì)¥µÁ½ÉĞ½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹%µµ•ÉÍ¥Ù••Á½Í¥ÑM…¹¹•Èì)¥µÁ½ÉĞ½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹‘…Ñ„¹•Á½Í¥Ñ-¥¹ì)¥µÁ½ÉĞ½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹‘…Ñ„¹•Á½Í¥ÑM½ÕÉ”ì)¥µÁ½ÉĞ½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹‘…Ñ„¹QÉ…­•‘•Á½Í¥Ğì)¥µÁ½ÉĞ½´¹½‰±¥á½ÉÁÉ¥µ”¹¥µµ•ÉÍ¥Ù•‘•Á½Í¥ÑÍ…¹¹•È¹‘…Ñ„¹QÉ…­•‘•Á½Í¥Ñ-•äì)¥µÁ½ÉĞ©…Ù„¹±…¹œ¹É•™±•Ğ¹¥•±ì)¥µÁ½ÉĞ©…Ù„¹±…¹œ¹É•™±•Ğ¹5•Ñ¡½ì)¥µÁ½ÉĞ©…Ù„¹±…¹œ¹É•™±•Ğ¹AÉ½áäì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹ÉÉ…å1¥ÍĞì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹1¥¹­•‘!…Í¡5…Àì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹1¥ÍĞì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹5…Àì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹=ÁÑ¥½¹…°ì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹=ÁÑ¥½¹…±½Õ‰±”ì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹=ÁÑ¥½¹…±1½¹œì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹UU%ì)¥µÁ½ÉĞ©…Ù„¹ÕÑ¥°¹½¹ÕÉÉ•¹Ğ¹…Ñ½µ¥Œ¹Ñ½µ¥%¹Ñ••Èì)¥µÁ½ÉĞ¹•Ğ¹µ¥¹•É…™Ğ¹½É”¹	±½­A½Ìì)¥µÁ½ÉĞ¹•Ğ¹µ¥¹•É…™Ğ¹É•Í½ÕÉ•Ì¹I•Í½ÕÉ•1½…Ñ¥½¸ì)¥µÁ½ÉĞ¹•Ğ¹µ¥¹•É…™Ğ¹İ½É±¹±•Ù•°¹1•Ù•°ì)¥µÁ½ÉĞ©½ÕÉ¹•åµ…À¹…Á¤¹ØÈ¹±¥•¹Ğ¹%±¥•¹ÑA$ì)¥µÁ½ÉĞ©½ÕÉ¹•åµ…À¹…Á¤¹ØÈ¹±¥•¹Ğ¹‘¥ÍÁ±…ä¹¥ÍÁ±…å…‰±”ì)¥µÁ½ÉĞ©½ÕÉ¹•åµ…À¹…Á¤¹ØÈ¹±¥•¹Ğ¹‘¥ÍÁ±…ä¹5…É­•É=Ù•É±…äì)¥µÁ½ÉĞ©½ÕÉ¹•åµ…À¹…Á¤¹ØÈ¹±¥•¹Ğ¹µ½‘•°¹5…Á%µ…”ì)¥µÁ½ÉĞ©½ÕÉ¹•åµ…À¹…Á¤¹ØÈ¹½µµ½¸¹İ…åÁ½¥¹Ğ¹]…åÁ½¥¹Ğì)¥µÁ½ÉĞ©½ÕÉ¹•åµ…À¹…Á¤¹ØÈ¹½µµ½¸¹İ…åÁ½¥¹Ğ¹]…åÁ½¥¹ÑÉ½ÕÀì()ÁÕ‰±¥Œ™¥¹…°±…ÍÌ)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÉE„ì(€€€ÁÉ¥Ù…Ñ”)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÉE„ ¤ì(€€€ô((€€€ÁÕ‰±¥ŒÍÑ…Ñ¥ŒÙ½¥ÉÕ¸ ¤ì(€€€€€€€…ÍÍ•ÉÑ±•…¹ÕÁQ½±•É…Ñ•ÍÁ¥…¥±ÕÉ•Ì ¤ì(€€€€€€€…ÍÍ•ÉÑ1•…å±•…¹ÕÁI•µ½Ù•Í%‘Í]…åÁ½¥¹ÑÍ=¹±ä ¤ì(€€€€€€€…ÍÍ•ÉÑM¡½İ…¥±ÕÉ•½•Í9½ÑQÉ…­¥ÍÁ±…åÌ ¤ì(€€€€€€€…ÍÍ•ÉÑMÕ‰©•ÑY¥ÍÕ…±ÍUÍ•I•Í½ÕÉ•%‘•¹Ñ¥Ñä ¤ì(€€€€€€€…ÍÍ•ÉÑ)½ÕÉ¹•å5…Á1…‰•±•™…Õ±ÑÌ ¤ì(€€€ô((€€€ÁÉ¥Ù…Ñ”ÍÑ…Ñ¥ŒÙ½¥…ÍÍ•ÉÑ)½ÕÉ¹•å5…Á1…‰•±•™…Õ±ÑÌ ¤ì(€€€€€€€…ÍÍ•ÉÑÅÕ…±Ì¡	½½±•…¸¹QIU°±¥•¹Ñ½¹™¥œ¹M!=]})=UI9e5A}5I-I}1	1L¹•Ñ•™…Õ±Ğ ¤°€‰µ…É­•È±…‰•±ÌÍ¡½Õ±‘•™…Õ±ĞÑ¼Ù¥Í¥‰±”ˆ¤ì(€€€€€€€…ÍÍ•ÉÑÅÕ…±Ì¡	½½±•…¸¹1M°±¥•¹Ñ½¹™¥œ¹M!=]})=UI9e5A}=YI1e}1	1L¹•Ñ•™…Õ±Ğ ¤°€‰½Ù•É±…ä±…‰•±ÌÍ¡½Õ±‘•™…Õ±ĞÑ¼¡¥‘‘•¸ˆ¤ì(€€€€€€€…ÍÍ•ÉÑÅÕ…±Ì¡	½½±•…¸¹1M°±¥•¹Ñ½¹™¥œ¹M!=]})=UI9e5A}]eA=%9Q}1	1L¹•Ñ•™…Õ±Ğ ¤°€‰İ…åÁ½¥¹Ğ±…‰•±ÌÍ¡½Õ±‘•™…Õ±ĞÑ¼Í¡½ÉĞ±…‰•±Ìˆ¤ì(€€€€€€€…ÍÍ•ÉÑÅÕ…±Ì¡	½½±•…¸¹1M°±¥•¹Ñ½¹™¥œ¹M!=]})=UI9e5A}MU	)Q}%M}%9}1	0¹•Ñ•™…Õ±Ğ ¤°€‰Ñ•¡¹¥…°ÍÕ‰©•Ğ¥‘ÌÍ¡½Õ±‰”¡¥‘‘•¸™É½´±…‰•±Ì‰ä‘•™…Õ±Ğˆ¤ì(€€€€€€€…ÍÍ•ÉÑÅÕ…±Ì¡	½½±•…¸¹1M°±¥•¹Ñ½¹™¥œ¹9	1}]eA=%9QL¹•Ñ•™…Õ±Ğ ¤°€‰)½ÕÉ¹•å5…Àİ…åÁ½¥¹ÑÌÍ¡½Õ±‰”‘¥Í…‰±•‰ä‘•™…Õ±Ğˆ¤ì(€€€€€€€…ÍÍ•ÉÑÅÕ…±Ì¡	½½±•…¸¹QIU°±¥•¹Ñ½¹™¥œ¹11	-}Q=}9I%}%=9L¹•Ñ•™…Õ±Ğ ¤°€‰©½ÕÉ¹•åµ…À¥½¹ÌÍ¡½Õ±‘•™…Õ±ĞÑ¼•¹•É¥Œ™…±±‰…¬ˆ¤ì(€€€ô((€€€ÁÉ¥Ù…Ñ”ÍÑ…Ñ¥ŒÙ½¥…ÍÍ•ÉÑ1•…å±•…¹ÕÁI•µ½Ù•Í%‘Í]…åÁ½¥¹ÑÍ=¹±ä ¤ì(€€€€€€€¥•±…Á¥¥•±ì(€€€€€€€=‰©•Ğ½É¥¥¹…±Á¤ì(€€€€€€€ÑÉäì(€€€€€€€€€€€…Á¥¥•±€ô)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È¹±…ÍÌ¹•Ñ•±…É•‘¥•± ‰…Á¤ˆ¤ì(€€€€€€€€€€€…Á¥¥•±¹Í•Ñ•ÍÍ¥‰±”¡ÑÉÕ”¤ì(€€€€€€€€€€€½É¥¥¹…±Á¤€ô…Á¥¥•±¹•Ğ¡¹Õ±°¤ì(€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÈA$™¥•±µÕÍĞ‰”É•…¡…‰±”™½È±•…ä±•…¹ÕÀEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€ô((€€€€€€€]…åÁ½¥¹Ğ‰É½­•¹]…åÁ½¥¹Ğ€ôÑ¡É½İ¥¹]…åÁ½¥¹Ğ ‰‰É½­•¸ˆ¤ì(€€€€€€€]…åÁ½¥¹Ğ½İ¹•‘]…åÁ½¥¹Ğ€ôİ…åÁ½¥¹Ğ ‰½İ¹•ˆ°%µµ•ÉÍ¥Ù••Á½Í¥ÑM…¹¹•È¹5=}%°€‰¥‘Ìµ½İ¹•µÉ½ÕÀˆ°¹Õ±°¤ì(€€€€€€€]…åÁ½¥¹ĞÉ½ÕÁ•‘]…åÁ½¥¹Ğ€ôİ…åÁ½¥¹Ğ ‰É½ÕÁ•ˆ°€‰½Ñ¡•É}µ½ˆ°€‰¥‘ÌµÉ½ÕÀˆ°¹Õ±°¤ì(€€€€€€€]…åÁ½¥¹ĞÕÍÑ½µ…Ñ…]…åÁ½¥¹Ğ€ôİ…åÁ½¥¹Ğ ‰ÕÍÑ½´ˆ°€‰½Ñ¡•É}µ½ˆ°€‰ÕÍÑ½´µÉ½ÕÀˆ°€‰¥‘Í|ÄÈÌˆ¤ì(€€€€€€€]…åÁ½¥¹ĞÕÍ•É]…åÁ½¥¹Ğ€ôİ…åÁ½¥¹Ğ ‰ÕÍ•Èˆ°€‰½Ñ¡•É}µ½ˆ°€‰ÕÍ•ÈµÉ½ÕÀˆ°¹Õ±°¤ì(€€€€€€€1¥ÍĞñ]…åÁ½¥¹ĞøÉ•µ½Ù•‘]…åÁ½¥¹ÑÌ€ô¹•ÜÉÉ…å1¥ÍĞğø ¤ì(€€€€€€€Ñ½µ¥%¹Ñ••ÈÉ•µ½Ù•±±…±±Ì€ô¹•ÜÑ½µ¥%¹Ñ••È ¤ì(€€€€€€€Ñ½µ¥%¹Ñ••ÈÉ•µ½Ù•±±]…åÁ½¥¹ÑÍ…±±Ì€ô¹•ÜÑ½µ¥%¹Ñ••È ¤ì((€€€€€€€%±¥•¹ÑA$±•…¹ÕÁÁ¤€ô€¡%±¥•¹ÑA$¤AÉ½áä¹¹•İAÉ½áå%¹ÍÑ…¹” (€€€€€€€€€€€€€€€%±¥•¹ÑA$¹±…ÍÌ¹•Ñ±…ÍÍ1½…‘•È ¤°(€€€€€€€€€€€€€€€¹•Ü±…ÍÌğüùmuí%±¥•¹ÑA$¹±…ÍÍô°(€€€€€€€€€€€€€€€€¡ÁÉ½áä°µ•Ñ¡½°…ÉÌ¤€´øÍİ¥Ñ €¡µ•Ñ¡½¹•Ñ9…µ” ¤¤ì(€€€€€€€€€€€€€€€€€€€…Í”€‰É•µ½Ù•±°ˆ€´øì(€€€€€€€€€€€€€€€€€€€€€€€É•µ½Ù•±±…±±Ì¹¥¹É•µ•¹Ñ¹‘•Ğ ¤ì(€€€€€€€€€€€€€€€€€€€€€€€å¥•±¹Õ±°ì(€€€€€€€€€€€€€€€€€€€ô(€€€€€€€€€€€€€€€€€€€…Í”€‰É•µ½Ù•±±]…åÁ½¥¹ÑÌˆ€´øì(€€€€€€€€€€€€€€€€€€€€€€€É•µ½Ù•±±]…åÁ½¥¹ÑÍ…±±Ì¹¥¹É•µ•¹Ñ¹‘•Ğ ¤ì(€€€€€€€€€€€€€€€€€€€€€€€å¥•±¹Õ±°ì(€€€€€€€€€€€€€€€€€€€ô(€€€€€€€€€€€€€€€€€€€…Í”€‰•Ñ±±]…åÁ½¥¹ÑÌˆ€´ø1¥ÍĞ¹½˜¡‰É½­•¹]…åÁ½¥¹Ğ°½İ¹•‘]…åÁ½¥¹Ğ°É½ÕÁ•‘]…åÁ½¥¹Ğ°ÕÍÑ½µ…Ñ…]…åÁ½¥¹Ğ°ÕÍ•É]…åÁ½¥¹Ğ¤ì(€€€€€€€€€€€€€€€€€€€…Í”€‰•Ñ]…åÁ½¥¹ÑÉ½ÕÀˆ€´øİ…åÁ½¥¹ÑÉ½ÕÀ ¡MÑÉ¥¹œ¤…ÉÍlÁt¤ì(€€€€€€€€€€€€€€€€€€€…Í”€‰É•µ½Ù•]…åÁ½¥¹Ğˆ€´øì(€€€€€€€€€€€€€€€€€€€€€€€É•µ½Ù•‘]…åÁ½¥¹ÑÌ¹…‘ ¡]…åÁ½¥¹Ğ¤…ÉÍlÅt¤ì(€€€€€€€€€€€€€€€€€€€€€€€å¥•±¹Õ±°ì(€€€€€€€€€€€€€€€€€€€ô(€€€€€€€€€€€€€€€€€€€‘•™…Õ±Ğ€´ø‘•™…Õ±ÑY…±Õ”¡µ•Ñ¡½¹•ÑI•ÑÕÉ¹QåÁ” ¤¤ì(€€€€€€€€€€€€€€€ô(€€€€€€€€¤ì((€€€€€€€ÑÉäì(€€€€€€€€€€€…Á¥¥•±¹Í•Ğ¡¹Õ±°°±•…¹ÕÁÁ¤¤ì(€€€€€€€€€€€)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È¹±•…¹ÕÁ1•…å)½ÕÉ¹•å5…ÁMÑ…Ñ” ¤ì(€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÈA$™¥•±µÕÍĞ‰”İÉ¥Ñ…‰±”™½È±•…ä±•…¹ÕÀEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€ô™¥¹…±±äì(€€€€€€€€€€€ÑÉäì(€€€€€€€€€€€€€€€…Á¥¥•±¹Í•Ğ¡¹Õ±°°½É¥¥¹…±Á¤¤ì(€€€€€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÈA$™¥•±µÕÍĞ‰”É•ÍÑ½É…‰±”…™Ñ•È±•…ä±•…¹ÕÀEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€ô(€€€€€€€ô((€€€€€€€…ÍÍ•ÉÑQÉÕ”¡É•µ½Ù•±±…±±Ì¹•Ğ ¤€ø€À°€‰±•…ä±•…¹ÕÀµÕÍĞ…±°)½ÕÉ¹•å5…ÀÉ•µ½Ù•±°™½È%L‘¥ÍÁ±…åÌˆ¤ì(€€€€€€€…ÍÍ•ÉÑQÉÕ”¡É•µ½Ù•±±]…åÁ½¥¹ÑÍ…±±Ì¹•Ğ ¤€ø€À°€‰±•…ä±•…¹ÕÀµÕÍĞ…±°)½ÕÉ¹•å5…ÀÉ•µ½Ù•±±]…åÁ½¥¹ÑÌ™½È%Lİ…åÁ½¥¹ÑÌˆ¤ì(€€€€€€€…ÍÍ•ÉÑQÉÕ” …½¹Ñ…¥¹Í%‘•¹Ñ¥Ñä¡É•µ½Ù•‘]…åÁ½¥¹ÑÌ°‰É½­•¹]…åÁ½¥¹Ğ¤°€‰±•…ä±•…¹ÕÀµÕÍĞ¹½ĞÉ•µ½Ù”„İ…åÁ½¥¹Ğ¥Ğ½Õ±¹½Ğ¥¹ÍÁ•Ğˆ¤ì(€€€€€€€…ÍÍ•ÉÑQÉÕ”¡½¹Ñ…¥¹Í%‘•¹Ñ¥Ñä¡É•µ½Ù•‘]…åÁ½¥¹ÑÌ°½İ¹•‘]…åÁ½¥¹Ğ¤°€‰±•…ä±•…¹ÕÀµÕÍĞÉ•µ½Ù”%Lµ½İ¹•İ…åÁ½¥¹ÑÌˆ¤ì(€€€€€€€…ÍÍ•ÉÑQÉÕ”¡½¹Ñ…¥¹Í%‘•¹Ñ¥Ñä¡É•µ½Ù•‘]…åÁ½¥¹ÑÌ°É½ÕÁ•‘]…åÁ½¥¹Ğ¤°€‰±•…ä±•…¹ÕÀµÕÍĞÉ•µ½Ù”İ…åÁ½¥¹ÑÌ¥¸%Lµ½İ¹•%LÉ½ÕÁÌˆ¤ì(€€€€€€€…ÍÍ•ÉÑQÉÕ”¡½¹Ñ…¥¹Í%‘•¹Ñ¥Ñä¡É•µ½Ù•‘]…åÁ½¥¹ÑÌ°ÕÍÑ½µ…Ñ…]…åÁ½¥¹Ğ¤°€‰±•…ä±•…¹ÕÀµÕÍĞÉ•µ½Ù”İ…åÁ½¥¹ÑÌÑ…•İ¥Ñ %LÕÍÑ½´‘…Ñ„ˆ¤ì(€€€€€€€…ÍÍ•ÉÑQÉÕ” …½¹Ñ…¥¹Í%‘•¹Ñ¥Ñä¡É•µ½Ù•‘]…åÁ½¥¹ÑÌ°ÕÍ•É]…åÁ½¥¹Ğ¤°€‰±•…ä±•…¹ÕÀµÕÍĞ¹½ĞÉ•µ½Ù”Õ¹É•±…Ñ•ÕÍ•Èİ…åÁ½¥¹ÑÌˆ¤ì(€€€ô((€€€ÁÉ¥Ù…Ñ”ÍÑ…Ñ¥ŒÙ½¥…ÍÍ•ÉÑ±•…¹ÕÁQ½±•É…Ñ•ÍÁ¥…¥±ÕÉ•Ì ¤ì(€€€€€€€¥•±…Á¥¥•±ì(€€€€€€€=‰©•Ğ½É¥¥¹…±Á¤ì(€€€€€€€ÑÉäì(€€€€€€€€€€€…Á¥¥•±€ô)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È¹±…ÍÌ¹•Ñ•±…É•‘¥•± ‰…Á¤ˆ¤ì(€€€€€€€€€€€…Á¥¥•±¹Í•Ñ•ÍÍ¥‰±”¡ÑÉÕ”¤ì(€€€€€€€€€€€½É¥¥¹…±Á¤€ô…Á¥¥•±¹•Ğ¡¹Õ±°¤ì(€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÈA$™¥•±µÕÍĞ‰”É•…¡…‰±”™½È±•…¹ÕÀEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€ô((€€€€€€€%±¥•¹ÑA$Ñ¡É½İ¥¹Á¤€ô€¡%±¥•¹ÑA$¤AÉ½áä¹¹•İAÉ½áå%¹ÍÑ…¹” (€€€€€€€€€€€€€€€%±¥•¹ÑA$¹±…ÍÌ¹•Ñ±…ÍÍ1½…‘•È ¤°(€€€€€€€€€€€€€€€¹•Ü±…ÍÌğüùmuí%±¥•¹ÑA$¹±…ÍÍô°(€€€€€€€€€€€€€€€€¡ÁÉ½áä°µ•Ñ¡½°…ÉÌ¤€´øì(€€€€€€€€€€€€€€€€€€€¥˜€¡µ•Ñ¡½¹•Ñ9…µ” ¤¹•ÅÕ…±Ì ‰É•µ½Ù•±°ˆ¤ñğµ•Ñ¡½¹•Ñ9…µ” ¤¹•ÅÕ…±Ì ‰É•µ½Ù•±±]…åÁ½¥¹ÑÌˆ¤¤ì(€€€€€€€€€€€€€€€€€€€€€€€Ñ¡É½Ü¹•Ü%±±•…±MÑ…Ñ•á•ÁÑ¥½¸ ‰Í¥µÕ±…Ñ•)½ÕÉ¹•å5…À±•…¹ÕÀ™…¥±ÕÉ”ˆ¤ì(€€€€€€€€€€€€€€€€€€€ô(€€€€€€€€€€€€€€€€€€€É•ÑÕÉ¸‘•™…Õ±ÑY…±Õ”¡µ•Ñ¡½¹•ÑI•ÑÕÉ¹QåÁ” ¤¤ì(€€€€€€€€€€€€€€€ô(€€€€€€€€¤ì((€€€€€€€ÑÉäì(€€€€€€€€€€€…Á¥¥•±¹Í•Ğ¡¹Õ±°°Ñ¡É½İ¥¹Á¤¤ì(€€€€€€€€€€€)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È¹±•…É±° ¤ì(€€€€€€€ô…Ñ €¡IÕ¹Ñ¥µ•á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…À±•…¹ÕÀ™…¥±ÕÉ•ÌµÕÍĞ¹½Ğ•Í…Á”…¡”±•…¹ÕÀˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÈA$™¥•±µÕÍĞ‰”İÉ¥Ñ…‰±”™½È±•…¹ÕÀEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€ô™¥¹…±±äì(€€€€€€€€€€€ÑÉäì(€€€€€€€€€€€€€€€…Á¥¥•±¹Í•Ğ¡¹Õ±°°½É¥¥¹…±Á¤¤ì(€€€€€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•ÈA$™¥•±µÕÍĞ‰”É•ÍÑ½É…‰±”…™Ñ•È±•…¹ÕÀEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€ô(€€€€€€€ô(€€€ô((€€€ÁÉ¥Ù…Ñ”ÍÑ…Ñ¥ŒÙ½¥…ÍÍ•ÉÑM¡½İ…¥±ÕÉ•½•Í9½ÑQÉ…­¥ÍÁ±…åÌ ¤ì(€€€€€€€¥•±…Á¥¥•±ì(€€€€€€€5•Ñ¡½ÑÉ…­%™M¡½İ¸ì(€€€€€€€=‰©•Ğ½É¥¥¹…±Á¤ì(€€€€€€€ÑÉäì(€€€€€€€€€€€…Á¥¥•±€ô)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È¹±…ÍÌ¹•Ñ•±…É•‘¥•± ‰…Á¤ˆ¤ì(€€€€€€€€€€€ÑÉ…­%™M¡½İ¸€ô)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È¹±…ÍÌ¹•Ñ•±…É•‘5•Ñ¡½ (€€€€€€€€€€€€€€€€€€€€‰ÑÉ…­%™M¡½İ¸ˆ°(€€€€€€€€€€€€€€€€€€€5…À¹±…ÍÌ°(€€€€€€€€€€€€€€€€€€€QÉ…­•‘•Á½Í¥Ñ-•ä¹±…ÍÌ°(€€€€€€€€€€€€€€€€€€€¥ÍÁ±…å…‰±”¹±…ÍÌ(€€€€€€€€€€€€¤ì(€€€€€€€€€€€…Á¥¥•±¹Í•Ñ•ÍÍ¥‰±”¡ÑÉÕ”¤ì(€€€€€€€€€€€ÑÉ…­%™M¡½İ¸¹Í•Ñ•ÍÍ¥‰±”¡ÑÉÕ”¤ì(€€€€€€€€€€€½É¥¥¹…±Á¤€ô…Á¥¥•±¹•Ğ¡¹Õ±°¤ì(€€€€€€€ô…Ñ €¡I•™±•Ñ¥Ù•=Á•É…Ñ¥½¹á•ÁÑ¥½¸•á•ÁÑ¥½¸¤ì(€€€€€€€€€€€Ñ¡É½Ü¹•ÜÍÍ•ÉÑ¥½¹ÉÉ½È ‰)½ÕÉ¹•å5…Á•Á½Í¥Ñ5…¹…•È‘¥ÍÁ±…äÑÉ…­•ÈµÕÍĞ‰”É•…¡…‰±”™½È‘¥ÍÁ±…äEˆ°•á•ÁÑ¥½¸¤ì(€€€€€€€ô((€€€€€€€%±¥•¹ÑA$Ñ¡É½İ¥¹Á¤€ô€¡%±¥•¹ÑA$¤AÉ½áä¹¹•İAÉ½áå%¹ÍÑ…¹” (€€€€€€€€€€€€€€€ƒo;æÚ$z{-®éÜj×E÷66ææW""Â'FW‡GW&W2ö¦÷W&æW–Öö–UöÖ–æW&Âçær"’À¢¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ–6öâ€¢Væ¶æ÷vå7V&¦V7DFW÷6—BÀ¢G'VRÀ¢G'VRÀ¢FW÷6—BÓâ¦÷W&æW”ÖW‡FW&æÅFW‡GW&U&W6öÇfW"ç&W6öÇfR†FW÷6—BÂfÆ–DÖ–æw2ÂFW‡GW&RÓâG'VR¢’À¢'Væ¶æ÷vâ7V&¦V7G2×W7BfÆÂ&6²v†VâæòÖF6†–ærW‡FW&æÂFW‡GW&RÖ–ærW†—7G2 ¢“°¢76W'Dæ÷DçVÆÂ„¦÷W&æW”ÖÖ&¶W$f7F÷'’æ–6öâ‡Væ¶æ÷vå7V&¦V7DFW÷6—B’Â'Væ¶æ÷vâ7V&¦V7BÖ&¶W"f7F÷'’–6öç2×W7BæWfW"&RçVÆÂ"“°¢76W'DWVÇ2€¢&W6÷W&6TÆö6F–öâæg&öÔæÖW76TæEF‚‚&–ÖÖW'6—fUöFW÷6—E÷66ææW""Â'FW‡GW&W2ö¦÷W&æW–ÖöFWÆWFVBçær"’À¢¦÷W&æW”ÖÖ&¶W$f7F÷'’æ–6öâ†FWÆWFVDFW÷6—B’À¢&FWÆWFVB7V&¦V7BÖ&¶W'2×W7BW6RF†RFWÆWFVBFW‡GW&R ¢“°¢76W'Dæ÷DçVÆÂ„¦÷W&æW”ÖÖ&¶W$f7F÷'’æ–6öâ†FWÆWFVDFW÷6—B’Â&FWÆWFVBÖ&¶W"f7F÷'’–6öç2×W7BæWfW"&RçVÆÂ"“°¢76W'DWVÇ2€¢&W6÷W&6TÆö6F–öâæg&öÔæÖW76TæEF‚‚&–ÖÖW'6—fUöFW÷6—E÷66ææW""Â'FW‡GW&W2ö¦÷W&æW–ÖöFWÆWFVBçær"’À¢¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ–6öâ†FWÆWFVDFW÷6—BÂG'VRÂG'VRÂFW÷6—BÓâ÷F–öæÂæöb†6öÅFW‡GW&R’’À¢&FWÆWFVBFW÷6—G2×W7B÷fW'&–FRW‡FW&æÂFW‡GW&RÖ–æw2 ¢“°¢7G&–ærÆ&VÂÒ¦÷W&æW”ÖÖ&¶W$f7F÷'’æÆ&VÂ†–TFW÷6—BÂfÇ6RÂG'VRÂfÇ6R“°¢76W'DWVÇ2‚%´”UÒ6–ææ&"³"ÂÓ5ÒR"ÂÆ&VÂÂ&FVfVÇB¦÷W&æW”ÖÆ&VÇ2×W7B&R6öæ6—6R"“°¢76W'EG'VR‚Æ&VÂæ6öçF–ç2‚'7V&¦V7CÒ"’Â&FVfVÇB¦÷W&æW”ÖÆ&VÇ2×W7Bæ÷BW‡÷6RFV6†æ–6Â7V&¦V7B–G2"“°¢7G&–ærFV'VtÆ&VÂÒ¦÷W&æW”ÖÖ&¶W$f7F÷'’æÆ&VÂ†–TFW÷6—BÂG'VRÂG'VRÂfÇ6R“°¢76W'EG'VR†FV'VtÆ&VÂæ6öçF–ç2‚'7V&¦V7CÖÖ–æV7&gC¦6öÂ"’Â&FV'Vr7V&¦V7BÆ&VÇ2×W7BW‡÷6RöæÇ’F†R66ææVB&W6÷W&6R–B"“°¢76W'EG'VR†FV'VtÆ&VÂæ6öçF–ç2‚#R"’Â'7V&¦V7BÆ&VÇ2×W7B¶VWF†R6öæf–wW&VB&VÖ–æ–ærW&6VçFvR"“°¢76W'DWVÇ2€¢""À¢¦÷W&æW”ÖÖ&¶W$f7F÷'’æÖ&¶W$ÖÆ&VÂ†–TFW÷6—BÂfÇ6RÂfÇ6RÂG'VRÂfÇ6R’À¢&Ö&¶W"Æ&VÇ2×W7B&R7W&W76–&ÆRv—F†÷WB&WGW&æ–ærçVÆÂ ¢“°¢76W'DWVÇ2€¢Æ&VÂÀ¢¦÷W&æW”ÖÖ&¶W$f7F÷'’æÖ&¶W$ÖÆ&VÂ†–TFW÷6—BÂG'VRÂfÇ6RÂG'VRÂfÇ6R’À¢&Ö&¶W"Æ&VÇ26†÷VÆBW6RF†R6öæ6—6RÖ&¶W"f÷&ÖGFW" ¢“°¢76W'DWVÇ2€¢""À¢¦÷W&æW”Ö÷fW&Æ”f7F÷'’æ÷fW&Æ”ÖÆ&VÂ†–TFW÷6—BÂfÇ6RÂfÇ6RÂG'VRÂfÇ6R’À¢&6‡Væ²÷fW&Æ’Æ&VÇ2×W7B&RF—6&ÆVB'’FVfVÇB ¢“°¢76W'DWVÇ2€¢Æ&VÂÀ¢¦÷W&æW”Ö÷fW&Æ”f7F÷'’æ÷fW&Æ”ÖÆ&VÂ†–TFW÷6—BÂG'VRÂfÇ6RÂG'VRÂfÇ6R’À¢&÷BÖ–â6‡Væ²÷fW&Æ’Æ&VÇ26†÷VÆB7F–ÆÂW6RF†R6öæ6—6RÖ&¶W"f÷&ÖGFW" ¢“°¢76W'DWVÇ2‚%´”UÒ"Â¦÷W&æW”ÖÖ&¶W$f7F÷'’çv—ö–çDÆ&VÂ†–TFW÷6—BÂfÇ6R’Â'v—ö–çBÆ&VÇ26†÷VÆB&RfW'’6†÷'B'’FVfVÇB"“°¢76W'DWVÇ2‚%´”UÒ6–ææ&""Â¦÷W&æW”ÖÖ&¶W$f7F÷'’çv—ö–çDÆ&VÂ†–TFW÷6—BÂG'VR’Â&÷BÖ–âv—ö–çBÆ&VÇ26†÷VÆB7F’6†÷'B"“°¢76W'EG'VR€¢¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ6öÆ÷"†–TFW÷6—BÂG'VR’Ò¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ6öÆ÷"†—FW÷6—BÂG'VR’À¢&F–ffW&VçB&W6÷W&6R7V&¦V7G2–âF†R6ÖR6‡Væ²6†÷VÆB&V6V—fRF–ffW&VçBF—7Æ’6öÆ÷'2 ¢“°¢76W'EG'VR€¢¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ6öÆ÷"‡Væ¶æ÷vå7V&¦V7DFW÷6—BÂG'VR’Ò¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ6öÆ÷"†fÆÆ&6µ7V&¦V7DFW÷6—BÂG'VR’À¢'Væ¶æ÷vâ&W6÷W&6R–G2×W7B7F–ÆÂ&öGV6RFWFW&Ö–æ—7F–27V&¦V7B6öÆ÷'2 ¢“°¢Ö–ÖvR–ÖvRÒ¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æÖ&¶W$–ÖvR†–TFW÷6—BÂfÇ6R“°¢76W'DWVÇ2€¢&W6÷W&6TÆö6F–öâæg&öÔæÖW76TæEF‚‚&–ÖÖW'6—fUöFW÷6—E÷66ææW""Â'FW‡GW&W2ö¦÷W&æW–Öö–UöÖ–æW&Âçær"’À¢–ÖvRævWD–ÖvTÆö6F–öâ‚’À¢&Ö&¶W"–ÖvW2×W7BW6RF†R6fRvVæW&–2”RFW‡GW&R ¢“°¢76W'DWVÇ2€¢çVÆÂÀ¢–ÖvRævWD–ÖvR‚’À¢&Ö&¶W"–ÖvW2×W7Bæ÷BW6RæF—fT–ÖvR'’FVfVÇB ¢“°¢Ö–ÖvRæF—fU&WVW7FVD–ÖvRÒ¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æÖ&¶W$–ÖvR‡Væ¶æ÷vå7V&¦V7DFW÷6—BÂG'VR“°¢76W'DWVÇ2€¢&W6÷W&6TÆö6F–öâæg&öÔæÖW76TæEF‚‚&–ÖÖW'6—fUöFW÷6—E÷66ææW""Â'FW‡GW&W2ö¦÷W&æW–Öö–UöÖ–æW&Âçær"’À¢æF—fU&WVW7FVD–ÖvRævWD–ÖvTÆö6F–öâ‚’À¢$æF—fT–ÖvR7V&¦V7B–6öç2×W7B&VÖ–âF—6&ÆVBVçF–Â6fR–×ÆVÖVçFF–öâW†—7G2 ¢“°¢76W'DWVÇ2€¢çVÆÂÀ¢æF—fU&WVW7FVD–ÖvRævWD–ÖvR‚’À¢$æF—fT–ÖvR7V&¦V7B–6öç2×W7Bæ÷B&R7&VFVB'’F†RfÆÆ&6²F‚ ¢“°¢76W'DWVÇ2€¢ƒ$TC4C2À¢¦÷W&æW”Ö7V&¦V7Ef—7VÇ2æ6öÆ÷"†–TFW÷6—BÂfÇ6RÂƒ$TC4C2Â„cdƒ4’À¢&F—6&Æ–ær7V&¦V7B–6öç2×W7BfÆÂ&6²FòF†RvVæW&–26÷W&6R6öÆ÷" ¢“°¢Ğ ¢&—fFR7FF–2G&6¶VDFW÷6—BFW÷6—B€¢G&6¶VDFW÷6—D¶W’¶W’À¢FW÷6—D¶–æB¶–æBÀ¢7G&–ærF—7Æ”æÖRÀ¢÷F–öæÃÅ&W6÷W&6TÆö6F–öãâ&W6÷W&6T–BÀ¢&ööÆVâFWÆWFV@¢’°¢&WGW&âæWrG&6¶VDFW÷6—B€¢¶W’À¢¶–æBÀ¢F—7Æ”æÖRÀ¢&W6÷W&6T–BÀ¢÷F–öæÂæöb†æWr&Æö6µ÷2†¶W’æ6‡Væµ‚‚’¢b²‚ÂcBÂ¶W’æ6‡Væµ¢‚’¢b²‚’’À¢UT”Bæg&öÕ7G&–ær‚#ÓÓÓÓ"’À¢ÂÀ¢ÂÀ¢÷F–öæÄÆöæræöbƒÂ’À¢÷F–öæÄÆöæræöbƒÂ’À¢÷F–öæÄF÷V&ÆRæöbƒãB’À¢FWÆWFV@¢“°¢Ğ ¢&—fFR7FF–2ö&¦V7BFVfVÇEfÇVR„6Æ73Ãóâ&WGW&åG—R’°¢–b‚&WGW&åG—Ræ—5&–Ö—F—fR‚’ÇÂ&WGW&åG—RÓÒfö–BåE•R’°¢&WGW&âçVÆÃ°¢Ğ¢–b‡&WGW&åG—RÓÒ&ööÆVâåE•R’°¢&WGW&âfÇ6S°¢Ğ¢–b‡&WGW&åG—RÓÒ6†&7FW"åE•R’°¢&WGW&âuÃs°¢Ğ¢&WGW&â°¢Ğ ¢&—fFR7FF–2v—ö–çBv—ö–çB…7G&–ær–BÂ7G&–ærÖöD–BÂ7G&–ærw&÷W–BÂ7G&–ær–G57F&ÆT¶W’’°¢&WGW&â…v—ö–çB’&÷‡’ææWu&÷‡”–ç7Fæ6R€¢v—ö–çBæ6Æ72ævWD6Æ74ÆöFW"‚’À¢æWr6Æ73Ãóåµ×µv—ö–çBæ6Æ77ÒÀ¢‡&÷‡’ÂÖWF†öBÂ&w2’Óâ7v—F6‚†ÖWF†öBævWDæÖR‚’’°¢66R&vWDwV–B"Â&vWD–B"Â&vWDæÖR"Óâ–C°¢66R&vWDÖöD–B"ÓâÖöD–C°¢66R&vWDw&÷W–B"Óâw&÷W–C°¢66R&vWD7W7FöÔFF"Óâ&w2ÒçVÆÂbb&w2æÆVæwF‚ÓÒbb&–G3¦¶W’"æWVÇ2†&w5³Ò’ò–G57F&ÆT¶W’¢çVÆÃ°¢FVfVÇBÓâFVfVÇEfÇVR†ÖWF†öBævWE&WGW&åG—R‚’“°¢Ğ¢“°¢Ğ ¢&—fFR7FF–2v—ö–çBF‡&÷v–æuv—ö–çB…7G&–ær–B’°¢&WGW&â…v—ö–çB’&÷‡’ææWu&÷‡”–ç7Fæ6R€¢v—ö–çBæ6Æ72ævWD6Æ74ÆöFW"‚’À¢æWr6Æ73Ãóåµ×µv—ö–çBæ6Æ77ÒÀ¢‡&÷‡’ÂÖWF†öBÂ&w2’Óâ7v—F6‚†ÖWF†öBævWDæÖR‚’’°¢66R&vWDwV–B"Â&vWD–B"Â&vWDæÖR"Óâ–C°¢66R&vWDÖöD–B"ÓâF‡&÷ræWr–ÆÆVvÅ7FFTW†6WF–öâ‚'6–×VÆFVBv—ö–çB–ç7V7F–öâf–ÇW&R"“°¢FVfVÇBÓâFVfVÇEfÇVR†ÖWF†öBævWE&WGW&åG—R‚’“°¢Ğ¢“°¢Ğ ¢&—fFR7FF–2&ööÆVâ6öçF–ç4–FVçF—G’„Æ—7CÅv—ö–çCâv—ö–çG2Âv—ö–çBW‡V7FVB’°¢&WGW&âv—ö–çG2ç7G&VÒ‚’æç”ÖF6‚‡v—ö–çBÓâv—ö–çBÓÒW‡V7FVB“°¢Ğ ¢&—fFR7FF–2v—ö–çDw&÷Wv—ö–çDw&÷W…7G&–ærw&÷W–B’°¢–b‚&–G2Öw&÷W"æWVÇ2†w&÷W–B’’°¢&WGW&âv—ö–çDw&÷W„–ÖÖW'6—fTFW÷6—E66ææW"äÔôEô”BÂ$–ÖÖW'6—fRFW÷6—B66ææW"ò–ÖÖW'6—fRVæv–æVW&–ær"“°¢Ğ¢&WGW&âv—ö–çDw&÷W‚&÷F†W%öÖöB"Â%W6W"w&÷W"“°¢Ğ ¢&—fFR7FF–2v—ö–çDw&÷Wv—ö–çDw&÷W…7G&–ærÖöD–BÂ7G&–æræÖR’°¢&WGW&â…v—ö–çDw&÷W’&÷‡’ææWu&÷‡”–ç7Fæ6R€¢v—ö–çDw&÷Wæ6Æ72ævWD6Æ74ÆöFW"‚’À¢æWr6Æ73Ãóåµ×µv—ö–çDw&÷Wæ6Æ77ÒÀ¢‡&÷‡’ÂÖWF†öBÂ&w2’Óâ7v—F6‚†ÖWF†öBævWDæÖR‚’’°¢66R&vWDwV–B"Â&vWEFr"ÓâæÖS°¢66R&vWDÖöD–B"ÓâÖöD–C°¢66R&vWDæÖR"ÓâæÖS°¢FVfVÇBÓâFVfVÇEfÇVR†ÖWF†öBævWE&WGW&åG—R‚’“°¢Ğ¢“°¢Ğ ¢&—fFR7FF–2fö–B76W'EG'VR†&ööÆVâ6öæF—F–öâÂ7G&–ærÖW76vR’°¢–b‚6öæF—F–öâ’°¢F‡&÷ræWr76W'F–öäW'&÷"†ÖW76vR“°¢Ğ¢Ğ ¢&—fFR7FF–2fö–B76W'Dæ÷DçVÆÂ„ö&¦V7BfÇVRÂ7G&–ærÖW76vR’°¢–b‡fÇVRÓÒçVÆÂ’°¢F‡&÷ræWr76W'F–öäW'&÷"†ÖW76vR“°¢Ğ¢Ğ ¢&—fFR7FF–2fö–B76W'DWVÇ2„ö&¦V7BW‡V7FVBÂö&¦V7B7GVÂÂ7G&–ærÖW76vR’°¢–b†W‡V7FVBÓÒçVÆÂò7GVÂÒçVÆÂ¢W‡V7FVBæWVÇ2†7GVÂ’’°¢F‡&÷ræWr76W'F–öäW'&÷"†ÖW76vR²"W‡V7FVCÒ"²W‡V7FVB²"7GVÃÒ"²7GVÂ“°¢Ğ¢Ğ§Ğ 
+package com.oblixorprime.immersivedepositscanner.client.journeymap;
+
+import com.oblixorprime.immersivedepositscanner.config.ClientConfig;
+import com.oblixorprime.immersivedepositscanner.ImmersiveDepositScanner;
+import com.oblixorprime.immersivedepositscanner.data.DepositKind;
+import com.oblixorprime.immersivedepositscanner.data.DepositSource;
+import com.oblixorprime.immersivedepositscanner.data.TrackedDeposit;
+import com.oblixorprime.immersivedepositscanner.data.TrackedDepositKey;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalLong;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
+import journeymap.api.v2.client.IClientAPI;
+import journeymap.api.v2.client.display.Displayable;
+import journeymap.api.v2.client.display.MarkerOverlay;
+import journeymap.api.v2.client.model.MapImage;
+import journeymap.api.v2.common.waypoint.Waypoint;
+import journeymap.api.v2.common.waypoint.WaypointGroup;
+
+public final class JourneyMapDepositManagerQa {
+    private JourneyMapDepositManagerQa() {
+    }
+
+    public static void run() {
+        assertCleanupToleratesApiFailures();
+        assertLegacyCleanupRemovesIdsWaypointsOnly();
+        assertShowFailureDoesNotTrackDisplays();
+        assertSubjectVisualsUseResourceIdentity();
+        assertJourneyMapLabelDefaults();
+    }
+
+    private static void assertJourneyMapLabelDefaults() {
+        assertEquals(Boolean.TRUE, ClientConfig.SHOW_JOURNEYMAP_MARKER_LABELS.getDefault(), "marker labels should default to visible");
+        assertEquals(Boolean.FALSE, ClientConfig.SHOW_JOURNEYMAP_OVERLAY_LABELS.getDefault(), "overlay labels should default to hidden");
+        assertEquals(Boolean.FALSE, ClientConfig.SHOW_JOURNEYMAP_WAYPOINT_LABELS.getDefault(), "waypoint labels should default to short labels");
+        assertEquals(Boolean.FALSE, ClientConfig.SHOW_JOURNEYMAP_SUBJECT_IDS_IN_LABEL.getDefault(), "technical subject ids should be hidden from labels by default");
+        assertEquals(Boolean.FALSE, ClientConfig.ENABLE_WAYPOINTS.getDefault(), "JourneyMap waypoints should be disabled by default");
+        assertEquals(Boolean.TRUE, ClientConfig.FALLBACK_TO_GENERIC_ICONS.getDefault(), "journeymap icons should default to generic fallback");
+    }
+
+    private static void assertLegacyCleanupRemovesIdsWaypointsOnly() {
+        Field apiField;
+        Object originalApi;
+        try {
+            apiField = JourneyMapDepositManager.class.getDeclaredField("api");
+            apiField.setAccessible(true);
+            originalApi = apiField.get(null);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager API field must be reachable for legacy cleanup QA", exception);
+        }
+
+        Waypoint brokenWaypoint = throwingWaypoint("broken");
+        Waypoint ownedWaypoint = waypoint("owned", ImmersiveDepositScanner.MOD_ID, "ids-owned-group", null);
+        Waypoint groupedWaypoint = waypoint("grouped", "other_mod", "ids-group", null);
+        Waypoint customDataWaypoint = waypoint("custom", "other_mod", "custom-group", "ids_123");
+        Waypoint userWaypoint = waypoint("user", "other_mod", "user-group", null);
+        List<Waypoint> removedWaypoints = new ArrayList<>();
+        AtomicInteger removeAllCalls = new AtomicInteger();
+        AtomicInteger removeAllWaypointsCalls = new AtomicInteger();
+
+        IClientAPI cleanupApi = (IClientAPI) Proxy.newProxyInstance(
+                IClientAPI.class.getClassLoader(),
+                new Class<?>[]{IClientAPI.class},
+                (proxy, method, args) -> switch (method.getName()) {
+                    case "removeAll" -> {
+                        removeAllCalls.incrementAndGet();
+                        yield null;
+                    }
+                    case "removeAllWaypoints" -> {
+                        removeAllWaypointsCalls.incrementAndGet();
+                        yield null;
+                    }
+                    case "getAllWaypoints" -> List.of(brokenWaypoint, ownedWaypoint, groupedWaypoint, customDataWaypoint, userWaypoint);
+                    case "getWaypointGroup" -> waypointGroup((String) args[0]);
+                    case "removeWaypoint" -> {
+                        removedWaypoints.add((Waypoint) args[1]);
+                        yield null;
+                    }
+                    default -> defaultValue(method.getReturnType());
+                }
+        );
+
+        try {
+            apiField.set(null, cleanupApi);
+            JourneyMapDepositManager.cleanupLegacyJourneyMapState();
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager API field must be writable for legacy cleanup QA", exception);
+        } finally {
+            try {
+                apiField.set(null, originalApi);
+            } catch (ReflectiveOperationException exception) {
+                throw new AssertionError("JourneyMapDepositManager API field must be restorable after legacy cleanup QA", exception);
+            }
+        }
+
+        assertTrue(removeAllCalls.get() > 0, "legacy cleanup must call JourneyMap removeAll for IDS displays");
+        assertTrue(removeAllWaypointsCalls.get() > 0, "legacy cleanup must call JourneyMap removeAllWaypoints for IDS waypoints");
+        assertTrue(!containsIdentity(removedWaypoints, brokenWaypoint), "legacy cleanup must not remove a waypoint it could not inspect");
+        assertTrue(containsIdentity(removedWaypoints, ownedWaypoint), "legacy cleanup must remove IDS-owned waypoints");
+        assertTrue(containsIdentity(removedWaypoints, groupedWaypoint), "legacy cleanup must remove waypoints in IDS-owned IDS groups");
+        assertTrue(containsIdentity(removedWaypoints, customDataWaypoint), "legacy cleanup must remove waypoints tagged with IDS custom data");
+        assertTrue(!containsIdentity(removedWaypoints, userWaypoint), "legacy cleanup must not remove unrelated user waypoints");
+    }
+
+    private static void assertCleanupToleratesApiFailures() {
+        Field apiField;
+        Object originalApi;
+        try {
+            apiField = JourneyMapDepositManager.class.getDeclaredField("api");
+            apiField.setAccessible(true);
+            originalApi = apiField.get(null);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager API field must be reachable for cleanup QA", exception);
+        }
+
+        IClientAPI throwingApi = (IClientAPI) Proxy.newProxyInstance(
+                IClientAPI.class.getClassLoader(),
+                new Class<?>[]{IClientAPI.class},
+                (proxy, method, args) -> {
+                    if (method.getName().equals("removeAll") || method.getName().equals("removeAllWaypoints")) {
+                        throw new IllegalStateException("simulated JourneyMap cleanup failure");
+                    }
+                    return defaultValue(method.getReturnType());
+                }
+        );
+
+        try {
+            apiField.set(null, throwingApi);
+            JourneyMapDepositManager.clearAll();
+        } catch (RuntimeException exception) {
+            throw new AssertionError("JourneyMap cleanup failures must not escape cache cleanup", exception);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager API field must be writable for cleanup QA", exception);
+        } finally {
+            try {
+                apiField.set(null, originalApi);
+            } catch (ReflectiveOperationException exception) {
+                throw new AssertionError("JourneyMapDepositManager API field must be restorable after cleanup QA", exception);
+            }
+        }
+    }
+
+    private static void assertShowFailureDoesNotTrackDisplays() {
+        Field apiField;
+        Method trackIfShown;
+        Object originalApi;
+        try {
+            apiField = JourneyMapDepositManager.class.getDeclaredField("api");
+            trackIfShown = JourneyMapDepositManager.class.getDeclaredMethod(
+                    "trackIfShown",
+                    Map.class,
+                    TrackedDepositKey.class,
+                    Displayable.class
+            );
+            apiField.setAccessible(true);
+            trackIfShown.setAccessible(true);
+            originalApi = apiField.get(null);
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager display tracker must be reachable for display QA", exception);
+        }
+
+        IClientAPI throwingApi = (IClientAPI) Proxy.newProxyInstance(
+                IClientAPI.class.getClassLoader(),
+                new Class<?>[]{IClientAPI.class},
+                (proxy, method, args) -> {
+                    if (method.getName().equals("show")) {
+                        throw new IllegalStateException("simulated JourneyMap display failure");
+                    }
+                    return defaultValue(method.getReturnType());
+                }
+        );
+
+        TrackedDepositKey key = new TrackedDepositKey(
+                Level.OVERWORLD,
+                2,
+                -3,
+                DepositSource.IMMERSIVE_ENGINEERING,
+                ResourceLocation.fromNamespaceAndPath("immersiveengineering", "show_failure_mineral")
+        );
+        Displayable display = new MarkerOverlay(
+                "immersive_deposit_scanner",
+                new BlockPos(40, 64, -40),
+                new MapImage(ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"), 16, 16)
+        );
+        Map<TrackedDepositKey, Displayable> displays = new LinkedHashMap<>();
+
+        try {
+            apiField.set(null, throwingApi);
+            trackIfShown.invoke(null, displays, key, display);
+            assertTrue(displays.isEmpty(), "JourneyMap displays must not be tracked when show fails");
+            trackIfShown.invoke(null, displays, key, null);
+            assertTrue(displays.isEmpty(), "null JourneyMap displays must not be tracked");
+        } catch (ReflectiveOperationException exception) {
+            throw new AssertionError("JourneyMapDepositManager display tracker must be callable for display QA", exception);
+        } finally {
+            try {
+                apiField.set(null, originalApi);
+            } catch (ReflectiveOperationException exception) {
+                throw new AssertionError("JourneyMapDepositManager API field must be restorable after display QA", exception);
+            }
+        }
+    }
+
+    private static void assertSubjectVisualsUseResourceIdentity() {
+        TrackedDepositKey ieKey = new TrackedDepositKey(
+                Level.OVERWORLD,
+                2,
+                -3,
+                DepositSource.IMMERSIVE_ENGINEERING,
+                ResourceLocation.fromNamespaceAndPath("immersiveengineering", "technical_mineral")
+        );
+        TrackedDeposit ieDeposit = deposit(
+                ieKey,
+                DepositKind.MINERAL,
+                "Cinnabar",
+                Optional.of(ResourceLocation.fromNamespaceAndPath("minecraft", "coal")),
+                false
+        );
+        TrackedDepositKey ipKey = new TrackedDepositKey(
+                Level.OVERWORLD,
+                2,
+                -3,
+                DepositSource.IMMERSIVE_PETROLEUM,
+                ResourceLocation.fromNamespaceAndPath("immersivepetroleum", "technical_reservoir")
+        );
+        TrackedDeposit ipDeposit = deposit(
+                ipKey,
+                DepositKind.FLUID_RESERVOIR,
+                "Sample Reservoir",
+                Optional.of(ResourceLocation.fromNamespaceAndPath("minecraft", "water")),
+                false
+        );
+        TrackedDeposit fallbackSubjectDeposit = deposit(
+                ieKey,
+                DepositKind.MINERAL,
+                "Fallback Mineral",
+                Optional.empty(),
+                false
+        );
+        TrackedDeposit unknownSubjectDeposit = deposit(
+                ieKey,
+                DepositKind.MINERAL,
+                "Unknown Mineral",
+                Optional.of(ResourceLocation.fromNamespaceAndPath("unknown_mod", "unknown_resource")),
+                false
+        );
+        TrackedDeposit depletedDeposit = deposit(
+                ieKey,
+                DepositKind.MINERAL,
+                "Empty Mineral",
+                Optional.of(ResourceLocation.fromNamespaceAndPath("minecraft", "coal")),
+                true
+        );
+        ResourceLocation coalTexture = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/item/coal.png");
+        List<String> validMappings = List.of("minecraft:coal=minecraft:textures/item/coal.png");
+
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("minecraft", "coal"),
+                JourneyMapSubjectVisuals.subjectId(ieDeposit),
+                "resourceId must be preferred as the JourneyMap subject even when it differs from depositId"
+        );
+        assertTrue(
+                !ieDeposit.key().depositId().equals(ieDeposit.resourceId().orElseThrow()),
+                "resourceId must be allowed to differ from the stable depositId"
+        );
+        assertEquals(
+                ieKey.depositId(),
+                JourneyMapSubjectVisuals.subjectId(fallbackSubjectDeposit),
+                "depositId must be the JourneyMap subject fallback"
+        );
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"),
+                JourneyMapMarkerFactory.icon(ieDeposit),
+                "IE subject markers must keep the generic texture fallback"
+        );
+        assertNotNull(JourneyMapMarkerFactory.icon(ieDeposit), "IE marker factory icons must never be null");
+        assertEquals(
+                Optional.of(coalTexture),
+                JourneyMapExternalTextureResolver.resolve(ieDeposit, validMappings, texture -> texture.equals(coalTexture)),
+                "valid external texture mappings must resolve to the configured texture"
+        );
+        assertEquals(
+                Optional.empty(),
+                JourneyMapExternalTextureResolver.resolve(ieDeposit, List.of("not-a-mapping", "minecraft:coal="), texture -> true),
+                "malformed external texture mappings must be ignored"
+        );
+        assertEquals(
+                Optional.empty(),
+                JourneyMapExternalTextureResolver.resolve(ieDeposit, validMappings, texture -> false),
+                "missing external textures must not resolve"
+        );
+        assertEquals(
+                coalTexture,
+                JourneyMapSubjectVisuals.icon(
+                        ieDeposit,
+                        true,
+                        true,
+                        deposit -> JourneyMapExternalTextureResolver.resolve(deposit, validMappings, texture -> true)
+                ),
+                "valid external texture mappings can select a marker texture when explicitly enabled"
+        );
+        assertEquals(
+                coalTexture,
+                JourneyMapSubjectVisuals.icon(
+                        ieDeposit,
+                        true,
+                        false,
+                        deposit -> JourneyMapExternalTextureResolver.resolve(deposit, validMappings, texture -> true)
+                ),
+                "fallback-to-generic flag should not suppress explicit external texture mappings"
+        );
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"),
+                JourneyMapSubjectVisuals.icon(
+                        ieDeposit,
+                        true,
+                        true,
+                        deposit -> JourneyMapExternalTextureResolver.resolve(deposit, validMappings, texture -> false)
+                ),
+                "missing external textures must fall back to the generic IE texture"
+        );
+        assertTrue(
+                JourneyMapSubjectVisuals.icon(
+                        ieDeposit,
+                        true,
+                        false,
+                        deposit -> JourneyMapExternalTextureResolver.resolve(deposit, validMappings, texture -> false)
+                ) == null,
+                "fallback-to-generic false should not return a generic IDS icon when no external icon is available"
+        );
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ip_reservoir.png"),
+                JourneyMapMarkerFactory.icon(ipDeposit),
+                "IP subject markers must keep the generic texture fallback"
+        );
+        assertNotNull(JourneyMapMarkerFactory.icon(ipDeposit), "IP marker factory icons must never be null");
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"),
+                JourneyMapMarkerFactory.icon(unknownSubjectDeposit),
+                "unknown resource subjects must use the safe generic IE texture fallback"
+        );
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"),
+                JourneyMapSubjectVisuals.icon(
+                        unknownSubjectDeposit,
+                        true,
+                        true,
+                        deposit -> JourneyMapExternalTextureResolver.resolve(deposit, validMappings, texture -> true)
+                ),
+                "unknown subjects must fall back when no matching external texture mapping exists"
+        );
+        assertNotNull(JourneyMapMarkerFactory.icon(unknownSubjectDeposit), "unknown subject marker factory icons must never be null");
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/depleted.png"),
+                JourneyMapMarkerFactory.icon(depletedDeposit),
+                "depleted subject markers must use the depleted texture"
+        );
+        assertNotNull(JourneyMapMarkerFactory.icon(depletedDeposit), "depleted marker factory icons must never be null");
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/depleted.png"),
+                JourneyMapSubjectVisuals.icon(depletedDeposit, true, true, deposit -> Optional.of(coalTexture)),
+                "depleted deposits must override external texture mappings"
+        );
+        String label = JourneyMapMarkerFactory.label(ieDeposit, false, true, false);
+        assertEquals("[IE] Cinnabar [2, -3] 10%", label, "default JourneyMap labels must be concise");
+        assertTrue(!label.contains("subject="), "default JourneyMap labels must not expose technical subject ids");
+        String debugLabel = JourneyMapMarkerFactory.label(ieDeposit, true, true, false);
+        assertTrue(debugLabel.contains("subject=minecraft:coal"), "debug subject labels must expose only the scanned resource id");
+        assertTrue(debugLabel.contains("10%"), "subject labels must keep the configured remaining percentage");
+        assertEquals(
+                "",
+                JourneyMapMarkerFactory.markerMapLabel(ieDeposit, false, false, true, false),
+                "marker labels must be suppressible without returning null"
+        );
+        assertEquals(
+                label,
+                JourneyMapMarkerFactory.markerMapLabel(ieDeposit, true, false, true, false),
+                "marker labels should use the concise marker formatter"
+        );
+        assertEquals(
+                "",
+                JourneyMapOverlayFactory.overlayMapLabel(ieDeposit, false, false, true, false),
+                "chunk overlay labels must be disabled by default"
+        );
+        assertEquals(
+                label,
+                JourneyMapOverlayFactory.overlayMapLabel(ieDeposit, true, false, true, false),
+                "opt-in chunk overlay labels should still use the concise marker formatter"
+        );
+        assertEquals("[IE]", JourneyMapMarkerFactory.waypointLabel(ieDeposit, false), "waypoint labels should be very short by default");
+        assertEquals("[IE] Cinnabar", JourneyMapMarkerFactory.waypointLabel(ieDeposit, true), "opt-in waypoint labels should stay short");
+        assertTrue(
+                JourneyMapSubjectVisuals.color(ieDeposit, true) != JourneyMapSubjectVisuals.color(ipDeposit, true),
+                "different resource subjects in the same chunk should receive different display colors"
+        );
+        assertTrue(
+                JourneyMapSubjectVisuals.color(unknownSubjectDeposit, true) != JourneyMapSubjectVisuals.color(fallbackSubjectDeposit, true),
+                "unknown resource ids must still produce deterministic subject colors"
+        );
+        MapImage image = JourneyMapSubjectVisuals.markerImage(ieDeposit, false);
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"),
+                image.getImageLocation(),
+                "marker images must use the safe generic IE texture"
+        );
+        assertEquals(
+                null,
+                image.getImage(),
+                "marker images must not use NativeImage by default"
+        );
+        MapImage nativeRequestedImage = JourneyMapSubjectVisuals.markerImage(unknownSubjectDeposit, true);
+        assertEquals(
+                ResourceLocation.fromNamespaceAndPath("immersive_deposit_scanner", "textures/journeymap/ie_mineral.png"),
+                nativeRequestedImage.getImageLocation(),
+                "NativeImage subject icons must remain disabled until a safe implementation exists"
+        );
+        assertEquals(
+                null,
+                nativeRequestedImage.getImage(),
+                "NativeImage subject icons must not be created by the fallback path"
+        );
+        assertEquals(
+                0x2ED3D3,
+                JourneyMapSubjectVisuals.color(ieDeposit, false, 0x2ED3D3, 0xF6A83A),
+                "disabling subject icons must fall back to the generic source color"
+        );
+    }
+
+    private static TrackedDeposit deposit(
+            TrackedDepositKey key,
+            DepositKind kind,
+            String displayName,
+            Optional<ResourceLocation> resourceId,
+            boolean depleted
+    ) {
+        return new TrackedDeposit(
+                key,
+                kind,
+                displayName,
+                resourceId,
+                Optional.of(new BlockPos(key.chunkX() * 16 + 8, 64, key.chunkZ() * 16 + 8)),
+                UUID.fromString("00000000-0000-0000-0000-000000000001"),
+                1000L,
+                1000L,
+                OptionalLong.of(10L),
+                OptionalLong.of(100L),
+                OptionalDouble.of(0.10D),
+                depleted
+        );
+    }
+
+    private static Object defaultValue(Class<?> returnType) {
+        if (!returnType.isPrimitive() || returnType == Void.TYPE) {
+            return null;
+        }
+        if (returnType == Boolean.TYPE) {
+            return false;
+        }
+        if (returnType == Character.TYPE) {
+            return '\0';
+        }
+        return 0;
+    }
+
+    private static Waypoint waypoint(String id, String modId, String groupId, String idsStableKey) {
+        return (Waypoint) Proxy.newProxyInstance(
+                Waypoint.class.getClassLoader(),
+                new Class<?>[]{Waypoint.class},
+                (proxy, method, args) -> switch (method.getName()) {
+                    case "getGuid", "getId", "getName" -> id;
+                    case "getModId" -> modId;
+                    case "getGroupId" -> groupId;
+                    case "getCustomData" -> args != null && args.length == 1 && "ids:key".equals(args[0]) ? idsStableKey : null;
+                    default -> defaultValue(method.getReturnType());
+                }
+        );
+    }
+
+    private static Waypoint throwingWaypoint(String id) {
+        return (Waypoint) Proxy.newProxyInstance(
+                Waypoint.class.getClassLoader(),
+                new Class<?>[]{Waypoint.class},
+                (proxy, method, args) -> switch (method.getName()) {
+                    case "getGuid", "getId", "getName" -> id;
+                    case "getModId" -> throw new IllegalStateException("simulated waypoint inspection failure");
+                    default -> defaultValue(method.getReturnType());
+                }
+        );
+    }
+
+    private static boolean containsIdentity(List<Waypoint> waypoints, Waypoint expected) {
+        return waypoints.stream().anyMatch(waypoint -> waypoint == expected);
+    }
+
+    private static WaypointGroup waypointGroup(String groupId) {
+        if ("ids-group".equals(groupId)) {
+            return waypointGroup(ImmersiveDepositScanner.MOD_ID, "Immersive Deposit Scanner / Immersive Engineering");
+        }
+        return waypointGroup("other_mod", "User Group");
+    }
+
+    private static WaypointGroup waypointGroup(String modId, String name) {
+        return (WaypointGroup) Proxy.newProxyInstance(
+                WaypointGroup.class.getClassLoader(),
+                new Class<?>[]{WaypointGroup.class},
+                (proxy, method, args) -> switch (method.getName()) {
+                    case "getGuid", "getTag" -> name;
+                    case "getModId" -> modId;
+                    case "getName" -> name;
+                    default -> defaultValue(method.getReturnType());
+                }
+        );
+    }
+
+    private static void assertTrue(boolean condition, String message) {
+        if (!condition) {
+            throw new AssertionError(message);
+        }
+    }
+
+    private static void assertNotNull(Object value, String message) {
+        if (value == null) {
+            throw new AssertionError(message);
+        }
+    }
+
+    private static void assertEquals(Object expected, Object actual, String message) {
+        if (expected == null ? actual != null : !expected.equals(actual)) {
+            throw new AssertionError(message + " expected=" + expected + " actual=" + actual);
+        }
+    }
+}
