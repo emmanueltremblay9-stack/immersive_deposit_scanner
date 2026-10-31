@@ -59,6 +59,14 @@ public final class IPReservoirReader {
         return info != null && info.fluidStack() != null && !info.fluidStack().isEmpty();
     }
 
+    static int reservoirInfoPercentage(byte percentage) {
+        return Math.min(100, Byte.toUnsignedInt(percentage));
+    }
+
+    static boolean isReservoirInfoDepleted(ReservoirInfo info) {
+        return info == null || info.amount() <= 0L;
+    }
+
     private static IPReservoirDiscovery fromReservoirInfo(ServerLevel level, ServerPlayer player, long now, ReservoirInfo info) {
         ResourceLocation fluidId = BuiltInRegistries.FLUID.getKey(info.getFluid());
         if (fluidId == null) {
@@ -66,12 +74,13 @@ public final class IPReservoirReader {
         }
         int chunkX = Math.floorDiv(info.x(), 16);
         int chunkZ = Math.floorDiv(info.z(), 16);
-        int percentage = Math.max(0, Byte.toUnsignedInt(info.percentage()));
+        int percentage = reservoirInfoPercentage(info.percentage());
         BlockPos samplePos = new BlockPos(info.x(), player.blockPosition().getY(), info.z());
+        ResourceLocation typeId = reservoirTypeId(level, samplePos).orElse(fluidId);
         TrackedDeposit deposit = new TrackedDeposit(
-                new TrackedDepositKey(level.dimension(), chunkX, chunkZ, DepositSource.IMMERSIVE_PETROLEUM, fluidId),
+                new TrackedDepositKey(level.dimension(), chunkX, chunkZ, DepositSource.IMMERSIVE_PETROLEUM, typeId),
                 DepositKind.FLUID_RESERVOIR,
-                humanName(fluidId),
+                humanName(typeId),
                 Optional.of(fluidId),
                 Optional.of(samplePos),
                 player.getUUID(),
@@ -79,8 +88,8 @@ public final class IPReservoirReader {
                 now,
                 info.amount() >= 0 ? OptionalLong.of(info.amount()) : OptionalLong.empty(),
                 OptionalLong.empty(),
-                OptionalDouble.of(Math.min(1.0D, percentage / 100.0D)),
-                info.amount() <= 0 || percentage <= 0
+                OptionalDouble.of(percentage / 100.0D),
+                isReservoirInfoDepleted(info)
         );
         return new IPReservoirDiscovery(deposit);
     }
@@ -95,7 +104,7 @@ public final class IPReservoirReader {
                 : OptionalDouble.empty();
         TrackedDeposit deposit = new TrackedDeposit(
                 new TrackedDepositKey(dimension, Math.floorDiv(samplePos.getX(), 16), Math.floorDiv(samplePos.getZ(), 16),
-                        DepositSource.IMMERSIVE_PETROLEUM, resourceId),
+                        DepositSource.IMMERSIVE_PETROLEUM, typeId),
                 DepositKind.FLUID_RESERVOIR,
                 humanName(typeId),
                 Optional.of(resourceId),
@@ -109,6 +118,18 @@ public final class IPReservoirReader {
                 reservoir.isEmpty()
         );
         return new IPReservoirDiscovery(deposit);
+    }
+
+    private static Optional<ResourceLocation> reservoirTypeId(ServerLevel level, BlockPos samplePos) {
+        try {
+            Reservoir reservoir = ReservoirHandler.getReservoir(level, samplePos);
+            if (reservoir == null || reservoir.getType() == null) {
+                return Optional.empty();
+            }
+            return Optional.of(reservoir.getType().id());
+        } catch (RuntimeException exception) {
+            return Optional.empty();
+        }
     }
 
     private static String humanName(ResourceLocation id) {

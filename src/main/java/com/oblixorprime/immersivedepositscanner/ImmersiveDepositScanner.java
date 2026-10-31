@@ -21,8 +21,12 @@ public final class ImmersiveDepositScanner {
     public static final String MOD_ID = "immersive_deposit_scanner";
     public static final String MOD_NAME = "Immersive Deposit Scanner";
     public static final Logger LOGGER = LogUtils.getLogger();
+    private static volatile String loadedVersion = "unknown";
 
     public ImmersiveDepositScanner(IEventBus modBus, ModContainer modContainer) {
+        loadedVersion = modContainer.getModInfo().getVersion().toString();
+        LOGGER.info("IDS loaded version {} JourneyMap label cleanup active", loadedVersion);
+
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
 
@@ -36,5 +40,9 @@ public final class ImmersiveDepositScanner {
 
     public static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    }
+
+    public static String loadedVersion() {
+        return loadedVersion;
     }
 }

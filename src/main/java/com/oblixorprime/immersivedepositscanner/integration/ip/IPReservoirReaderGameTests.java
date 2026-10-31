@@ -26,4 +26,21 @@ public final class IPReservoirReaderGameTests {
         helper.assertTrue(!IPReservoirReader.isUsableReservoirInfo(null), "null IP reservoir info must be ignored");
         helper.succeed();
     }
+
+    @GameTest(template = "empty", timeoutTicks = 20)
+    public static void positiveReservoirAmountIsNotDepletedWhenPercentageRoundsToZero(GameTestHelper helper) {
+        ReservoirInfo traceAmount = new ReservoirInfo(0, 0, (byte) 0, 1L, new FluidStack(Fluids.WATER, 1), 1);
+        helper.assertTrue(
+                !IPReservoirReader.isReservoirInfoDepleted(traceAmount),
+                "positive IP reservoir amounts must not be marked depleted just because integer percentage rounded to zero"
+        );
+        helper.assertTrue(
+                IPReservoirReader.reservoirInfoPercentage((byte) -1) == 100,
+                "corrupt unsigned IP percentages above 100 must be clamped before IDS stores remaining percentage"
+        );
+
+        ReservoirInfo empty = new ReservoirInfo(0, 0, (byte) 100, 0L, new FluidStack(Fluids.WATER, 1), 1);
+        helper.assertTrue(IPReservoirReader.isReservoirInfoDepleted(empty), "zero IP reservoir amount must still be depleted");
+        helper.succeed();
+    }
 }

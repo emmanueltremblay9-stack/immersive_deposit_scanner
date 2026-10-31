@@ -167,19 +167,26 @@ public record TrackedDeposit(
         OptionalLong maximumAmount = readOptionalLongTag(tag, "maximumAmount");
         OptionalDouble percentageRemaining = readOptionalDoubleTag(tag, "percentageRemaining");
         return new TrackedDeposit(
-                TrackedDepositKey.fromTag(tag.getCompound("key")),
+                TrackedDepositKey.fromTag(requireCompound(tag, "key")),
                 requireKind(tag),
-                tag.getString("displayName"),
+                requireString(tag, "displayName"),
                 resourceId,
                 samplePosition,
-                tag.getUUID("discoveredBy"),
-                tag.getLong("discoveredAt"),
-                tag.getLong("updatedAt"),
+                requireUuid(tag, "discoveredBy"),
+                requireLong(tag, "discoveredAt"),
+                requireLong(tag, "updatedAt"),
                 currentAmount,
                 maximumAmount,
                 percentageRemaining,
-                tag.getBoolean("depleted")
+                requireBoolean(tag, "depleted")
         );
+    }
+
+    private static CompoundTag requireCompound(CompoundTag tag, String fieldName) {
+        if (!tag.contains(fieldName, Tag.TAG_COMPOUND)) {
+            throw new IllegalArgumentException("Missing or invalid deposit field: " + fieldName);
+        }
+        return tag.getCompound(fieldName);
     }
 
     private static boolean hasCompleteSamplePosition(CompoundTag tag) {
@@ -211,6 +218,27 @@ public record TrackedDeposit(
             throw new IllegalArgumentException("Missing or invalid deposit field: " + fieldName);
         }
         return tag.getString(fieldName);
+    }
+
+    private static UUID requireUuid(CompoundTag tag, String fieldName) {
+        if (!tag.hasUUID(fieldName)) {
+            throw new IllegalArgumentException("Missing or invalid deposit field: " + fieldName);
+        }
+        return tag.getUUID(fieldName);
+    }
+
+    private static long requireLong(CompoundTag tag, String fieldName) {
+        if (!tag.contains(fieldName, Tag.TAG_LONG)) {
+            throw new IllegalArgumentException("Missing or invalid deposit field: " + fieldName);
+        }
+        return tag.getLong(fieldName);
+    }
+
+    private static boolean requireBoolean(CompoundTag tag, String fieldName) {
+        if (!tag.contains(fieldName, Tag.TAG_BYTE)) {
+            throw new IllegalArgumentException("Missing or invalid deposit field: " + fieldName);
+        }
+        return tag.getBoolean(fieldName);
     }
 
     public static String normalizeDisplayName(String value) {

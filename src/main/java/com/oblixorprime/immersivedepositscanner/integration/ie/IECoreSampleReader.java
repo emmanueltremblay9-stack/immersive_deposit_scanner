@@ -1,6 +1,8 @@
 package com.oblixorprime.immersivedepositscanner.integration.ie;
 
 import blusunrize.immersiveengineering.api.excavator.ExcavatorHandler;
+import blusunrize.immersiveengineering.api.excavator.MineralMix;
+import blusunrize.immersiveengineering.api.crafting.StackWithChance;
 import blusunrize.immersiveengineering.common.items.CoresampleItem;
 import blusunrize.immersiveengineering.common.register.IEDataComponents;
 import com.oblixorprime.immersivedepositscanner.data.DepositKind;
@@ -8,11 +10,13 @@ import com.oblixorprime.immersivedepositscanner.data.DepositSource;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDeposit;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDepositKey;
 import java.time.Instant;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.OptionalLong;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,9 +39,11 @@ public final class IECoreSampleReader {
         int y = player.blockPosition().getY();
         long now = Instant.now().toEpochMilli();
         BlockPos position = new BlockPos(samplePosition.x(), y, samplePosition.z());
+        DominantSubject visualSubject = dominantSampleSubject(level, data.veins())
+                .orElseGet(() -> fallbackSubject(data.veins().getFirst().mineral()));
 
         return data.veins().stream()
-                .map(vein -> toDiscovery(samplePosition, chunkX, chunkZ, position, player, now, vein))
+                .map(vein -> toDiscovery(samplePosition, chunkX, chunkZ, position, player, now, vein, visualSubject))
                 .toList();
     }
 
@@ -48,7 +54,8 @@ public final class IECoreSampleReader {
             BlockPos position,
             ServerPlayer player,
             long now,
-            CoresampleItem.VeinSample vein
+            CoresampleItem.VeinSample vein,
+            DominantSubject visualSubject
     ) {
         ResourceLocation mineral = vein.mineral();
         int maximumYield = ExcavatorHandler.mineralVeinYield;
@@ -66,8 +73,8 @@ public final class IECoreSampleReader {
         TrackedDeposit deposit = new TrackedDeposit(
                 key,
                 DepositKind.MINERAL,
-                humanName(mineral),
-                Optional.of(mineral),
+                visualSubject.displayName(),
+                Optional.of(visualSubject.resourceId()),
                 Optional.of(position),
                 player.getUUID(),
                 now,
@@ -78,6 +85,93 @@ public final class IECoreSampleReader {
                 isDepleted(vein.depletion(), maximumYield, saturation)
         );
         return new IEMineralDiscovery(deposit);
+    }
+
+    private static Optional<DominantSubject> dominantSampleSubject(ServerLevel level, List<CoresampleItem.VeinSample> veins) {
+        return veins.stream()
+                .max(Comparator.comparingDouble(IECoreSampleReader::sampleShare))
+                .map(CoresampleItem.VeinSample::mineral)
+                .map(mineral -> subjectForMineral(level, mineral));
+    }
+
+    private static DominantSubject subjectForMineral(ServerLevel level, ResourceLocation mineral) {
+        try {
+            MineralMix mix = MineralMix.RECIPES.getById(level, mineral);
+            if (mix == null) {
+                return fallbackSubject(mineral);
+            }
+            return subjectForMineral(mineral, mix.outputs);
+        } catch (RuntimeException exception) {
+            return fallbackSubject(mineral);
+        }
+    }
+
+    static DominantSubject subjectForMineral(ResourceLocation mineral, List<StackWithChance> outputs) {
+        ResourceLocation subject = dominantOutputResource(outputs).orElse(mineral);
+        return new DominantSubject(
+                subject,
+                humanName(subject)
+        );
+    }
+
+    static DominantSubject subjectForResolvedOutputs(ResourceLocation mineral, List<ResolvedOutput> outputs) {
+        ResourceLocation subject = dominantResolvedOutputResource(outputs).orElse(mineral);
+        return new DominantSubject(
+                subject,
+                humanName(subject)
+        );
+    }
+
+    static Optional<ResourceLocation> dominantOutputResource(List<StackWithChance> outputs) {
+        if (outputs == null || outputs.isEmpty()) {
+            return Optional.empty();
+        }
+        List<ResolvedOutput> resolvedOutputs = outputs.stream()
+                .map(IECoreSampleReader::toOutputSubject)
+                .flatMap(Optional::stream)
+                .toList();
+        return dominantResolvedOutputResource(resolvedOutputs);
+    }
+
+    static Optional<ResourceLocation> dominantResolvedOutputResource(List<ResolvedOutput> outputs) {
+        if (outputs == null || outputs.isEmpty()) {
+            return Optional.empty();
+        }
+        return outputs.stream()
+                .filter(output -> output != null && output.resourceId() != null && Double.isFinite(output.score()) && output.score() > 0.0D)
+                .max(Comparator.comparingDouble(ResolvedOutput::score))
+                .map(ResolvedOutput::resourceId);
+    }
+
+    private static Optional<ResolvedOutput> toOutputSubject(StackWithChance output) {
+        if (output == null || !Double.isFinite(output.chance()) || output.chance() <= 0.0F) {
+            return Optional.empty();
+        }
+        try {
+            if (output.stack() == null) {
+                return Optional.empty();
+            }
+            ItemStack stack = output.stack().get();
+            if (stack.isEmpty()) {
+                return Optional.empty();
+            }
+            ResourceLocation resourceId = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            if (resourceId == null) {
+                return Optional.empty();
+            }
+            return Optional.of(new ResolvedOutput(resourceId, output.chance() * Math.max(1, stack.getCount())));
+        } catch (RuntimeException exception) {
+            return Optional.empty();
+        }
+    }
+
+    private static DominantSubject fallbackSubject(ResourceLocation mineral) {
+        return new DominantSubject(mineral, humanName(mineral));
+    }
+
+    private static double sampleShare(CoresampleItem.VeinSample vein) {
+        double share = vein.percentageInTotalSample();
+        return Double.isFinite(share) ? share : 0.0D;
     }
 
     static OptionalLong currentYield(int depletion, int maximumYield) {
@@ -109,7 +203,9 @@ public final class IECoreSampleReader {
     }
 
     private static String humanName(ResourceLocation id) {
-        String path = id.getPath().replace('_', ' ').replace('-', ' ');
+        String rawPath = id.getPath();
+        int slash = rawPath.lastIndexOf('/');
+        String path = (slash >= 0 ? rawPath.substring(slash + 1) : rawPath).replace('_', ' ').replace('-', ' ');
         StringBuilder builder = new StringBuilder(path.length());
         boolean upperNext = true;
         for (int i = 0; i < path.length(); i++) {
@@ -125,5 +221,11 @@ public final class IECoreSampleReader {
             }
         }
         return builder.toString();
+    }
+
+    record DominantSubject(ResourceLocation resourceId, String displayName) {
+    }
+
+    record ResolvedOutput(ResourceLocation resourceId, double score) {
     }
 }

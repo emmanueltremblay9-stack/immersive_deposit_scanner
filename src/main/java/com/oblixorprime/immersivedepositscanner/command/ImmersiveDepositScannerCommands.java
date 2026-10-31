@@ -1,6 +1,8 @@
 package com.oblixorprime.immersivedepositscanner.command;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.oblixorprime.immersivedepositscanner.ImmersiveDepositScanner;
+import com.oblixorprime.immersivedepositscanner.config.ClientConfig;
 import com.oblixorprime.immersivedepositscanner.data.DepositSource;
 import com.oblixorprime.immersivedepositscanner.data.TrackedDeposit;
 import com.oblixorprime.immersivedepositscanner.tracking.DepositTrackingService;
@@ -8,6 +10,7 @@ import java.util.List;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
@@ -32,6 +35,7 @@ public final class ImmersiveDepositScannerCommands {
                         .then(Commands.literal("ie").executes(context -> list(context.getSource(), DepositSource.IMMERSIVE_ENGINEERING, false)))
                         .then(Commands.literal("ip").executes(context -> list(context.getSource(), DepositSource.IMMERSIVE_PETROLEUM, false)))
                         .then(Commands.literal("currentchunk").executes(context -> list(context.getSource(), null, true))))
+                .then(Commands.literal("version").executes(context -> version(context.getSource())))
                 .then(Commands.literal("resync").executes(context -> resync(context.getSource())))
                 .then(Commands.literal("scanheld").executes(context -> scanHeld(context.getSource())))
                 .then(Commands.literal("remove")
@@ -55,6 +59,12 @@ public final class ImmersiveDepositScannerCommands {
         }
         source.sendSuccess(() -> Component.translatable("commands.immersive_deposit_scanner.scanheld.success", deposits.size()), false);
         return deposits.size();
+    }
+
+    private static int version(CommandSourceStack source) {
+        formatVersionLines(ImmersiveDepositScanner.loadedVersion())
+                .forEach(line -> source.sendSuccess(() -> Component.literal(line), false));
+        return 1;
     }
 
     private static int resync(CommandSourceStack source) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
@@ -107,14 +117,41 @@ public final class ImmersiveDepositScannerCommands {
         return 1;
     }
 
-    private static String formatDeposit(TrackedDeposit deposit) {
-        return "%s [%s] %s @ %s %d,%d".formatted(
+    static String formatDeposit(TrackedDeposit deposit) {
+        return "%s source=%s chunk=%s %d,%d resourceId=%s depositId=%s".formatted(
                 deposit.displayName(),
                 deposit.key().source().serializedName(),
-                deposit.key().depositId(),
                 deposit.key().dimension().location(),
                 deposit.key().chunkX(),
-                deposit.key().chunkZ()
+                deposit.key().chunkZ(),
+                deposit.resourceId().map(ResourceLocation::toString).orElse("<none>"),
+                deposit.key().depositId()
         );
+    }
+
+    static List<String> formatVersionLines(String modVersion) {
+        return List.of(
+                "modId=" + ImmersiveDepositScanner.MOD_ID,
+                "modVersion=" + modVersion,
+                "journeyMapLabelCleanup=active",
+                journeyMapClientDefaultsLine(),
+                "journeyMapClientConfig=client-local; server command shows code defaults, not each client's current config file"
+        );
+    }
+
+    private static String journeyMapClientDefaultsLine() {
+        try {
+            return "journeyMapClientDefaults enableJourneyMapMarkers=%s enableJourneyMapChunkOverlays=%s enableWaypoints=%s markerLabels=%s overlayLabels=%s waypointLabels=%s subjectIdsInLabel=%s".formatted(
+                    ClientConfig.ENABLE_JOURNEYMAP_MARKERS.getDefault(),
+                    ClientConfig.ENABLE_JOURNEYMAP_CHUNK_OVERLAYS.getDefault(),
+                    ClientConfig.ENABLE_WAYPOINTS.getDefault(),
+                    ClientConfig.SHOW_JOURNEYMAP_MARKER_LABELS.getDefault(),
+                    ClientConfig.SHOW_JOURNEYMAP_OVERLAY_LABELS.getDefault(),
+                    ClientConfig.SHOW_JOURNEYMAP_WAYPOINT_LABELS.getDefault(),
+                    ClientConfig.SHOW_JOURNEYMAP_SUBJECT_IDS_IN_LABEL.getDefault()
+            );
+        } catch (RuntimeException exception) {
+            return "journeyMapClientDefaults=<unavailable server-side>";
+        }
     }
 }
